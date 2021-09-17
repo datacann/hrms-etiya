@@ -10,6 +10,8 @@ import { CandidateSignComponent } from './features/candidate/candidate-sign/cand
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { NaviComponent } from './features/navi/navi.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
+import { LoginComponent } from './features/login/login/login.component';
+import { JobPositionAddComponent } from './features/job/job-position-add/job-position-add.component';
 
 
 
@@ -19,6 +21,8 @@ import { EmployerSignComponent } from './features/employers/employer-sign/employ
     CandidateSignComponent,
     NaviComponent,
     EmployerSignComponent,
+    LoginComponent,
+    JobPositionAddComponent,
   ],
   imports: [
     BrowserModule,

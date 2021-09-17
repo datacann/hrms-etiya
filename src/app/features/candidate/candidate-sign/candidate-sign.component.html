@@ -72,11 +72,11 @@
             <label for="floatingPassword">Nationality Id</label>
           </div>
           <div class="form-floating">
-            <input formControlName="password"  type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input formControlName="password" [(ngModel)]="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
           </div>
           <div class="form-floating">
-            <input formControlName="password"  type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input formControlName="verifyPassword"  [(ngModel)]="verifyPassword" type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password Again</label>
           </div>
           <div class="checkbox mb-3">

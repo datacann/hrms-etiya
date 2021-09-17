@@ -13,6 +13,9 @@ export class CandidateSignComponent implements OnInit {
 
   checkNationalityId: boolean
   checkEmail: boolean
+  password:string=""
+  verifyPassword:string=""
+  
 
   candidateSignForm: FormGroup
 
@@ -30,62 +33,61 @@ export class CandidateSignComponent implements OnInit {
       lastName: ["", Validators.required],
       email: ["", Validators.required],
       password: ["", Validators.required],
+      verifyPassword:["",Validators.required],
       nationalityId: ["", Validators.required],
       birthYear: ["", Validators.required],
     })
   }
 
-
+ 
   addCandidate() {
-
-    if (this.candidateSignForm.valid) {
-      this.checkByNationalityId();
-      this.checkByEmail();
-      if (!this.checkNationalityId && !this.checkEmail) {
-        this.candidateService.add(this.candidateSignForm.value).subscribe((response: any) => {
-          this.toastrService.success(response.message, "başarılı")
-          console.log(this.checkEmail)
-          console.log(this.checkNationalityId)
-           })      
-      }else if(this.checkNationalityId){
-        this.toastrService.error("bu natinality id kullanılıyor")
-      }else if(this.checkEmail){
-        this.toastrService.error("bu e posta kullanılıyor")
-      }
-    } else {
-      this.toastrService.error("formunuz geçersiz")
+    this.checkByNationalityId();
+    this.checkByEmail();
+    if (this.candidateSignForm.valid) {  
+        if ( !this.checkEmail && !this.checkNationalityId && this.checkPassword() ) {
+          let candidateModel = Object.assign({}, this.candidateSignForm.value);
+          this.candidateService.add(candidateModel).subscribe((response) => {
+            console.log(candidateModel)
+            this.toastrService.success("Kaydınız yapıldı.", candidateModel.firstName)
+          })
+        }
+      
+      
     }
   }
 
   
 
-  checkByNationalityId() {
+  checkByNationalityId(){
     this.candidateService.getCandidatesByNationalityId(this.candidateSignForm.value["nationalityId"]).subscribe((data: any) => {
-      if (data.success == true) {
-        this.checkNationalityId = true
-      } else {
+      if (data.data == false) {
         this.checkNationalityId = false
+
+      } else {
+        this.checkNationalityId = true
+        this.toastrService.error("bu natinality id kullanılıyor")
       }
     })
   }
 
   checkByEmail() {
     this.userService.getByEmail(this.candidateSignForm.value["email"]).subscribe((data: any) => {
-      if (data.success == true) {
-        this.checkEmail = true        
+      if (data.data == false) {
+        this.checkEmail = false   
       } else {
-        this.checkEmail = false
+        this.checkEmail = true
+        this.toastrService.error("bu e posta kullanılıyor") 
       }
     })
   }
 
-
+  checkPassword(){
+    if(this.password===this.verifyPassword){
+      return true;
+    }else{
+      this.toastrService.error("şifreler uyuşmuyor")
+      return false;   
+    }
+}
 }
 
- // if (!this.checkEmail) {
-        //   this.candidateService.add(this.candidateAddForm.value).subscribe((response: any) => {
-        //     this.toastrService.success(response.message, "başarılı")
-        //   })
-        // } else {
-        //   
-        // }
