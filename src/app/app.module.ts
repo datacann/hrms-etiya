@@ -16,6 +16,7 @@ import { EmployerListComponent } from './features/employers/employer-list/employ
 import { JobPositionListComponent } from './features/job/job-position-list/job-position-list.component';
 import { JobAdvertisementAddComponent } from './features/job-advertisement/job-advertisement-add/job-advertisement-add.component';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
+import { ActiveJobAdvertListComponent } from './features/job-advertisement/active-job-advert-list/active-job-advert-list.component';
 
 
 
@@ -31,6 +32,7 @@ import { CandidateListComponent } from './features/candidate/candidate-list/cand
     EmployerListComponent,
     JobPositionListComponent,
     JobAdvertisementAddComponent,
+    ActiveJobAdvertListComponent,
   ],
   imports: [
     BrowserModule,

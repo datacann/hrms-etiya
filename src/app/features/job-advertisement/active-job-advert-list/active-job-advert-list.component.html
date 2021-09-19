@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col">Position Name</th>
+        <th scope="col">Number of Position</th>
+        <th scope="col">Date</th>
+        <th scope="col">Deadline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let active of activeJobAdverts">    
+        <td>{{active.companyName}}</td>
+        <td>{{active.companyName}}</td>
+        <td>{{active.openPositions}}</td>
+        <td>{{active.workTime}}</td>
+        <td>{{active.deadline}}</td>
+        {{active.companyName}}
+      </tr>
+  
+    </tbody>
+  </table>
+  

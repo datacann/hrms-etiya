@@ -21,7 +21,7 @@ export class JobAdvertisementAddComponent implements OnInit {
   positions: JobPosition[] = []
   cities: City[] = []
   employers: Employer[]=[]
-  workTypes: JobAdvertisement[]=[]
+  // workTypes: JobAdvertisement[]=[]
 
   constructor(private formBuilder: FormBuilder,
     private citiesService: CitiesService,
@@ -36,7 +36,7 @@ export class JobAdvertisementAddComponent implements OnInit {
     this.getJobPositions()
     this.getCities()
     this.getEmployers()
-    this.getWorkTypes()
+    // this.getWorkTypes()
   }
 
   createJobAdvertisementFrom() {
@@ -94,10 +94,15 @@ export class JobAdvertisementAddComponent implements OnInit {
     })
   }
 
-  getWorkTypes(){
-    this.jobAdvertisementService.getAll().subscribe((data:any)=>{
-      this.workTypes=data.data
-    })
-  }
+  // getWorkTypes(){
+  //   this.jobAdvertisementService.getAll().subscribe((data:any)=>{
+  //     this.workTypes=data.data
+  //   })
+  // }
+
+
+
+  
+  
 
 }

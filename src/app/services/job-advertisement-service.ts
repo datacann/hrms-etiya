@@ -21,5 +21,9 @@ export class JobAdvertisementService {
     return this.httpClient.get<JobAdvertisement>(this.apiUrl+"/get/all")
   }
 
+  getJobsByActive(){
+    return this.httpClient.get(this.apiUrl + "/get/active")
+  }
+
 
 }

@@ -11,4 +11,5 @@ export  interface JobAdvertisement{
     positionId:number
     workModel:string
     workTime:string
+    companyName:string
 }

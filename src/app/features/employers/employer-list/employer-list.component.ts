@@ -21,7 +21,7 @@ export class EmployerListComponent implements OnInit {
 
   getEmployers(){
     this.employerService.getEmployers().subscribe((data:any)=>{
-      this.employers=data
+      this.employers=data.data
     })
   }
 
