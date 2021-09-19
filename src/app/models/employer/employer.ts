@@ -1,4 +1,5 @@
 export interface Employer{
+    id:number;
     companyName:string
     email:string
     password:string

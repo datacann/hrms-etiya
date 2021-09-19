@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Candidate } from 'src/app/models/candidate/candidate';
+import { CandidateService } from 'src/app/services/candidate.service';
 
 @Component({
   selector: 'app-candidate-list',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateListComponent implements OnInit {
 
-  constructor() { }
+  candidateAddForm: FormGroup
+  constructor(private formBuilder:FormBuilder,
+    private toastrService:ToastrService,private candidateService:CandidateService) { }
+
+    candidates:Candidate[]=[]
 
   ngOnInit(): void {
+
+    this.getCandidates()
+    
   }
 
-}
+  getCandidates(){
+    this.candidateService.getCandidates().subscribe((data:any)=>{
+      this.candidates=data.data
+    })
+  }
+
+  
+  }

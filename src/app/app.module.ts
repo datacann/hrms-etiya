@@ -12,6 +12,10 @@ import { NaviComponent } from './features/navi/navi.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
 import { LoginComponent } from './features/login/login/login.component';
 import { JobPositionAddComponent } from './features/job/job-position-add/job-position-add.component';
+import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
+import { JobPositionListComponent } from './features/job/job-position-list/job-position-list.component';
+import { JobAdvertisementAddComponent } from './features/job-advertisement/job-advertisement-add/job-advertisement-add.component';
+import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 
 
 
@@ -19,10 +23,14 @@ import { JobPositionAddComponent } from './features/job/job-position-add/job-pos
   declarations: [
     AppComponent,
     CandidateSignComponent,
+    CandidateListComponent,
     NaviComponent,
     EmployerSignComponent,
     LoginComponent,
     JobPositionAddComponent,
+    EmployerListComponent,
+    JobPositionListComponent,
+    JobAdvertisementAddComponent,
   ],
   imports: [
     BrowserModule,

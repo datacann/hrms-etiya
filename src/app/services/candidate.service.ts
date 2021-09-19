@@ -19,4 +19,9 @@ export class CandidateService {
   getCandidatesByNationalityId(nationalityId:string){
     return this.httpClient.get(this.apiUrl + "/exists/byNatId?nationalityId=" + nationalityId)
   }
+
+  getCandidates():Observable<Candidate[]>{ 
+    return this.httpClient.get<Candidate[]>(this.apiUrl+"/get/all")
+  }
+
 }

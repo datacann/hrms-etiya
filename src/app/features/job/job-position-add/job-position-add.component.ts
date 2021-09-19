@@ -12,7 +12,9 @@ export class JobPositionAddComponent implements OnInit {
 
   jobPositionAddForm:FormGroup
 
-  constructor(private jobPositionService:JobPositionService,private formBuilder:FormBuilder,private toastrService:ToastrService) { }
+  constructor(private jobPositionService:JobPositionService,
+    private formBuilder:FormBuilder,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.createJobAddForm()
