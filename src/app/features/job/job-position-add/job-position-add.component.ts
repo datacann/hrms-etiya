@@ -22,7 +22,7 @@ export class JobPositionAddComponent implements OnInit {
 
   createJobAddForm(){
     this.jobPositionAddForm = this.formBuilder.group({
-      positionTitle: ["",Validators.required]
+      title: ["",Validators.required]
     })
   }
   

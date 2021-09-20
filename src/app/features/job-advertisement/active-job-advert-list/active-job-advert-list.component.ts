@@ -10,7 +10,7 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement-serv
 export class ActiveJobAdvertListComponent implements OnInit {
 
   activeJobAdverts:JobAdvertisement[]=[] 
-
+  
   constructor(private jobAdvetisementService:JobAdvertisementService) { }
 
   ngOnInit(): void {
@@ -23,7 +23,4 @@ export class ActiveJobAdvertListComponent implements OnInit {
       console.log(this.activeJobAdverts)
     })
   }
-
-
-
 }

@@ -24,8 +24,6 @@ export class UserService {
     return this.httpClient.get<User[]>(this.apiUrl + "/login?email="+user.email+ "&password="+user.password )
   }
 
-
-
   userExistsByLogin(user:User):Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl + "/exists/byEmailAndPW?email="+user.email+ "&password="+user.password )
   }

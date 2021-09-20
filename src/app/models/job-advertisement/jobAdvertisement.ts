@@ -1,5 +1,10 @@
+import { Employer } from "../employer/employer";
+import { JobPosition } from "../jobPosition/jobPosition";
+
 export  interface JobAdvertisement{
     
+    employer:Employer
+    position:JobPosition
     cityId:number
     deadline:string
     employerId:number
@@ -12,4 +17,6 @@ export  interface JobAdvertisement{
     workModel:string
     workTime:string
     companyName:string
+    createdAt:string
+    
 }

@@ -19,7 +19,7 @@ export class JobPositionService {
   }
 
   getJobPositionAdd(jobPosition:JobPosition):Observable<JobPosition>{
-    return this.httpClient.post<JobPosition>(this.apiUrl + "/add?positionTitle=",jobPosition )
+    return this.httpClient.post<JobPosition>(this.apiUrl + "/add?positionTitle=" + jobPosition.title ,jobPosition )
   }
 
 

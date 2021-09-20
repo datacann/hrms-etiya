@@ -25,5 +25,13 @@ export class JobAdvertisementService {
     return this.httpClient.get(this.apiUrl + "/get/active")
   }
 
+  getActiveJobByDate(){
+    return this.httpClient.get(this.apiUrl + "/get/activeVerifiedByCreatedAt")
+  }
+
+  getActiveJobByEmployer(){
+    return this.httpClient.get(this.apiUrl + "/get/byEmployer")
+  }
+
 
 }

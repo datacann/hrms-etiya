@@ -16,7 +16,7 @@ export class EmployerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployers()
-
+    console.log(typeof(this.employers))
   }
 
   getEmployers(){
