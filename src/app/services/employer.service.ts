@@ -19,4 +19,6 @@ export class EmployerService {
   getEmployers():Observable<Employer[]>{ //https://javareactcamp-hrms-backend.herokuapp.com/api/employers/get/all
     return this.httpClient.get<Employer[]>(this.apiUrl+"/get/all")
   }
+
+
 }

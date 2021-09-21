@@ -33,5 +33,11 @@ export class JobAdvertisementService {
     return this.httpClient.get(this.apiUrl + "/get/byEmployer")
   }
 
+  closeJobAdvertisement(jobAdvertisement:JobAdvertisement):Observable<JobAdvertisement>{
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/activation?jobAdvId=" + 
+                                                  jobAdvertisement.id + "&status=" + 
+                                                 !jobAdvertisement.active,jobAdvertisement )
+  }
+
 
 }

@@ -23,4 +23,9 @@ export class ActiveJobAdvertListComponent implements OnInit {
       console.log(this.activeJobAdverts)
     })
   }
+
+  changeActivite(jobAdvertisement:JobAdvertisement){
+    this.jobAdvetisementService.closeJobAdvertisement(jobAdvertisement).subscribe((response:any)=>{
+    })
+  }
 }

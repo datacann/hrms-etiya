@@ -18,5 +18,6 @@ export  interface JobAdvertisement{
     workTime:string
     companyName:string
     createdAt:string
+    active:boolean
     
 }

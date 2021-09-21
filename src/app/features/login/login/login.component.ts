@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup
 
-  constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,private router:Router,private userService:UserService) { }
+  constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,private userService:UserService) { }
 
   ngOnInit(): void {
     this.createLoginForm()
@@ -30,12 +30,10 @@ export class LoginComponent implements OnInit {
 
   login(){
     let user : User = this.loginForm.value;
-
     this.userService.getUser(user).subscribe(data=>{
       if(this.userExistsByLogin){
         this.toastrService.success("Sisteme giriş yapıldı.");
         localStorage.setItem("user",JSON.stringify(data[0]))
-       
       }else{
         this.toastrService.error("Kullanıcı bilgileri hatalı.")
       }

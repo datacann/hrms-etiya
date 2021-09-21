@@ -7,6 +7,7 @@ import { EmployerSignComponent } from './features/employers/employer-sign/employ
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
 import { ActiveJobAdvertListComponent } from './features/job-advertisement/active-job-advert-list/active-job-advert-list.component';
+import { CloseJobAdvertisementComponent } from './features/job-advertisement/close-job-advertisement/close-job-advertisement.component';
 import { JobAdvertisementAddComponent } from './features/job-advertisement/job-advertisement-add/job-advertisement-add.component';
 import { JobPositionAddComponent } from './features/job/job-position-add/job-position-add.component';
 import { JobPositionListComponent } from './features/job/job-position-list/job-position-list.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:"activeJobAdvertList",component:ActiveJobAdvertListComponent},
   {path:"activeJobAdvertListByDate",component:ActiveJobAdvertByDateComponent},
   {path:"activeJobAdvertListByEmployer",component:ActivJobAdvertByEmployerComponent},
+  {path:"changeActivite",component:CloseJobAdvertisementComponent},
   
   
 ];

@@ -15,9 +15,14 @@
         <td>{{active.openPositions}}</td>
         <td>{{active.createdAt}}</td>
         <td>{{active.deadline}}</td>
-            
+        <td>{{active.active}}</td>
+        <td>
+          <button (click)="changeActivite(active)"></button>
+
+        </td>
       </tr>
   
     </tbody>
   </table>
-  
+
+ 

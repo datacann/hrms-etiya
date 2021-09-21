@@ -10,19 +10,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="jobAdvertisementAdd">jobAdvert</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/activeJobAdvertListByDate">jobAdvertByDate</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/activeJobAdvertListByEmployer">jobAdvertByEmployer</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/activeJobAdvertList">active job adversitement</a>
-        </li>
        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -58,6 +45,21 @@
             <li><a class="dropdown-item" href="#" routerLink="/jobPositionList">Position List</a></li>
             
           </ul>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Advertisements
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" routerLink="/jobAdvertisementAdd">Add</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/activeJobAdvertListByDate">ListByDate</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/activeJobAdvertListByEmployer">ListByEmployer</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/activeJobAdvertList">List</a></li>
+              
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
