@@ -17,6 +17,7 @@ export class CandidateSchoolComponent implements OnInit {
   candidateSchoolForm:FormGroup
   departments:Department[]=[]
   schools:School[]=[]
+  candidate:any
 
   constructor(private candidateSchoolService:CandidateSchoolService,
               private formBuilder:FormBuilder,
@@ -33,7 +34,7 @@ export class CandidateSchoolComponent implements OnInit {
 
   createCandidateSchoolForm(){
     this.candidateSchoolForm = this.formBuilder.group({
-      candidateId: ["", Validators.required],
+      candidateId: [this.getCandidateId()],
       departmentId: ["", Validators.required],
       graduationYear: [""],
       schoolId: ["", Validators.required],
@@ -46,6 +47,7 @@ export class CandidateSchoolComponent implements OnInit {
       this.candidateSchoolService.add(this.candidateSchoolForm.value).subscribe((response:any)=>{
         console.log(this.candidateSchoolForm.value);
         this.toastrService.success(response.message ,"okul bilgileri eklendi")
+        this.candidateSchoolForm.reset()
       },
       (responseError) => {
         this.toastrService.error(
@@ -72,4 +74,11 @@ getSchools(){
     this.schools=data.data
   })
 }
+
+
+ getCandidateId():any{
+   this.candidate = JSON.parse(localStorage.getItem('user'))
+   return this.candidate.data.id
+ }
+
 }

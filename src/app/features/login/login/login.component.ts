@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLoginForm()
+    
   }
 
   createLoginForm(){
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.userService.getUser(user).subscribe(data=>{
       if(this.userExistsByLogin){
         this.toastrService.success("Sisteme giriş yapıldı.");
-        localStorage.setItem("user",JSON.stringify(data[0]))
+        localStorage.setItem("user",JSON.stringify(data))
       }else{
         this.toastrService.error("Kullanıcı bilgileri hatalı.")
       }

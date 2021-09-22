@@ -1,12 +1,50 @@
-<p>candidate-school works!</p>
+<div class="card mb-3">
+    <img src="https://www.collegedata.com/hs-fs/collegedata/images/article/college_size_sm_m_l.jpg" 
+      class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Okul Bilgileri</h5>
+      <p class="card-text">Okul Bilgilerinizi Girerek CV'nizi güçlendirin</p>
+      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal2">
+        Okul Bilgisi Ekle
+      </button>
+    </div>
 
-<tr *ngFor="let d of departments" >  
-    <td>{{d.name}}</td>
-    
-</tr>
 
 
-<tr *ngFor="let a of schools" >  
-    <td>{{a.name}}</td>
-    
-</tr>
+<!-- Modal -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <form [formGroup]="candidateSchoolForm">
+            <div class="mb-3">
+                <label>School</label>
+                <select  class="form-select" formControlName="schoolId" >
+                    <option value="" disabled>cities </option>
+                    <option *ngFor="let school of schools" [ngValue]="school.id" >{{school.name}}</option>  
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Graduation Year</label>
+                <input type="year" placeholder="graduationYear" formControlName="graduationYear" class="form-control"  />
+            </div>
+            <div class="mb-3">
+                <label>Department Name</label>
+                <select  class="form-select" formControlName="departmentId" >
+                    <option *ngFor="let department of departments" [ngValue]="department.id" >{{department.name}}</option>  
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Start Year</label>
+                <input type="year" placeholder="startYear" formControlName="startYear"
+                    class="form-control" />
+            </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" (click)="add()" class="btn btn-primary">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>

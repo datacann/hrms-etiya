@@ -1,0 +1,35 @@
+
+<div class="card mb-3">
+    <img src="https://www.collegedata.com/hs-fs/collegedata/images/article/college_size_sm_m_l.jpg" 
+      class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Yetenek Bilgileri</h5>
+      <p class="card-text">Yetenek Bilgilerinizi Girerek Şirketlerin Dikkatini Çekin</p>
+      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal3">
+        Okul Bilgisi Ekle
+      </button>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <form [formGroup]="candidateSkillForm">
+            <div class="mb-3">
+                <label>Yetenekler</label>
+                <select  class="form-select" formControlName="skillId" >
+                    <option value="" disabled>Skills </option>
+                    <option *ngFor="let skill of skills" [ngValue]="skill.id" >{{skill.name}}</option>  
+                </select>
+            </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" (click)="add()" class="btn btn-primary">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>

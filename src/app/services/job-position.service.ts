@@ -14,8 +14,8 @@ export class JobPositionService {
   constructor(private httpClient:HttpClient) { }
 
 
-  getJobPositions():Observable<JobPosition>{
-    return this.httpClient.get<JobPosition>(this.apiUrl + "/get/all")
+  getJobPositions():Observable<JobPosition[]>{
+    return this.httpClient.get<JobPosition[]>(this.apiUrl + "/get/all")
   }
 
   getJobPositionAdd(jobPosition:JobPosition):Observable<JobPosition>{
