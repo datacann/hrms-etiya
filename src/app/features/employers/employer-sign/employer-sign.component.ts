@@ -55,7 +55,7 @@ addEmployer() {
   if (this.employerSignForm.valid) {
     this.employerService.add(this.employerSignForm.value).subscribe(
       (response: any) => {
-        this.toastrService.success('Başarılı');
+        this.toastrService.success(response.message,'Başarılı');
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.data.errors);
@@ -66,7 +66,7 @@ addEmployer() {
       }
     );
   } else {
-    this.toastrService.error('Formunuz eksik', 'Dikkat!');
+    this.toastrService.error( 'Formunuz eksik', 'Dikkat!');
   }
 }
 

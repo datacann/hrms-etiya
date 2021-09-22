@@ -20,6 +20,8 @@ import { ActiveJobAdvertListComponent } from './features/job-advertisement/activ
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
 import { CloseJobAdvertisementComponent } from './features/job-advertisement/close-job-advertisement/close-job-advertisement.component';
+import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
+import { CandidateSchoolComponent } from './features/candidate/candidate-school/candidate-school.component';
 
 
 
@@ -39,6 +41,8 @@ import { CloseJobAdvertisementComponent } from './features/job-advertisement/clo
     ActiveJobAdvertByDateComponent,
     ActivJobAdvertByEmployerComponent,
     CloseJobAdvertisementComponent,
+    CvAddComponent,
+    CandidateSchoolComponent,
   ],
   imports: [
     BrowserModule,

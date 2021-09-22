@@ -22,6 +22,7 @@ export class ActivJobAdvertByEmployerComponent implements OnInit {
       this.activeJobsByEmployer = data.data
       console.log(this.activeJobsByEmployer)
     })
+
   }
 
 

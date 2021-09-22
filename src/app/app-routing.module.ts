@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
+import { CandidateSchoolComponent } from './features/candidate/candidate-school/candidate-school.component';
 import { CandidateSignComponent } from './features/candidate/candidate-sign/candidate-sign.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:"activeJobAdvertListByDate",component:ActiveJobAdvertByDateComponent},
   {path:"activeJobAdvertListByEmployer",component:ActivJobAdvertByEmployerComponent},
   {path:"changeActivite",component:CloseJobAdvertisementComponent},
+  {path:"candidateSchool",component:CandidateSchoolComponent},
   
   
 ];
