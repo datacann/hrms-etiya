@@ -25,6 +25,7 @@ import { CandidateSchoolComponent } from './features/candidate/candidate-school/
 import { CandidateExperienceComponent } from './features/candidate/candidate-experience/candidate-experience.component';
 import { CandidateSkillComponent } from './features/candidate/candidate-skill/candidate-skill.component';
 import { CandidateLanguageComponent } from './features/candidate/candidate-language/candidate-language.component';
+import { CandidateImageComponent } from './features/candidate/candidate-image/candidate-image.component';
 
 
 
@@ -49,6 +50,8 @@ import { CandidateLanguageComponent } from './features/candidate/candidate-langu
     CandidateExperienceComponent,
     CandidateSkillComponent,
     CandidateLanguageComponent,
+    CandidateImageComponent,
+    
   ],
   imports: [
     BrowserModule,

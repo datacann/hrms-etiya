@@ -1,3 +1,4 @@
+<form [formGroup]="cvAddForm">
 <div class="mb-3">
   <label>CV Title</label>
   <input type="text" placeholder="cvTitle" formControlName="title" class="form-control" />
@@ -22,21 +23,13 @@
     Add
   </button>
 </div>
+</form>
 
 <app-candidate-school></app-candidate-school>
 <app-candidate-experience></app-candidate-experience>
 <app-candidate-skill></app-candidate-skill>
 <app-candidate-language></app-candidate-language>
+<app-candidate-image></app-candidate-image>
 
-<div class="card mb-3">
-  <img src="https://www.collegedata.com/hs-fs/collegedata/images/article/college_size_sm_m_l.jpg" class="card-img-top"
-    alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Okul Bilgileri</h5>
-    <p class="card-text">Okul Bilgilerinizi Girerek CV'nizi güçlendirin</p>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal2">
-      Okul Bilgisi Ekle
-    </button>
-  </div>
 
   

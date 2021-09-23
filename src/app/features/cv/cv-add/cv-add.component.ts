@@ -16,17 +16,20 @@ export class CvAddComponent implements OnInit {
     private toastrService:ToastrService) { }
 
   cvAddForm:FormGroup
+  candidate:any
 
   ngOnInit(): void {
     this.createCvAddForm()
+    console.log(this.getCandidateJObExperienceId())
+    console.log(this.getCandidateLanguageId())
   }
 
   createCvAddForm() {
     this.cvAddForm = this.formBuilder.group({
-      candidateJobExperienceIds: ['', Validators.required],
-      candidateLanguageIds:['', Validators.required],
-      candidateSchoolIds: ['', Validators.required],
-      candidateSkillIds: ['', Validators.required],
+      candidateJobExperienceIds: [this.getCandidateJObExperienceId()],
+      candidateLanguageIds:[this.getCandidateLanguageId()],
+      candidateSchoolIds: [this. getCandidateschoolId()],
+      candidateSkillIds: [this.getCandidateSkillsId()],
       coverLetter: ['', Validators.required],
       title: ['', Validators.required],
       linkedinAccount:['', Validators.required],
@@ -55,6 +58,24 @@ export class CvAddComponent implements OnInit {
     }
   } 
 
-  
+  getCandidateJObExperienceId():any{
+    this.candidate = JSON.parse(localStorage.getItem('user'))
+    return this.candidate.data.candidateJobExperiences
+  }
+
+  getCandidateLanguageId():any{
+    this.candidate = JSON.parse(localStorage.getItem('user'))
+    return this.candidate.data.candidateLanguages
+  }
+
+  getCandidateschoolId():any{
+    this.candidate = JSON.parse(localStorage.getItem('user'))
+    return this.candidate.candidateSchools
+  }
+
+  getCandidateSkillsId():any{
+    this.candidate = JSON.parse(localStorage.getItem('user'))
+    return this.candidate.data.candidateSkills
+  }
 
 }
