@@ -7,7 +7,7 @@ import { JobAdvertisement } from 'src/app/models/job-advertisement/jobAdvertisem
 import { JobPosition } from 'src/app/models/jobPosition/jobPosition';
 import { CitiesService } from 'src/app/services/cities.service';
 import { EmployerService } from 'src/app/services/employer.service';
-import { JobAdvertisementService } from 'src/app/services/job-advertisement-service';
+import { JobAdvertisementService } from 'src/app/services/job-advertisement.service';
 import { JobPositionService } from 'src/app/services/job-position.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class JobAdvertisementAddComponent implements OnInit {
   jobAdvertisementForm: FormGroup
   positions: JobPosition[] = []
   cities: City[] = []
-  employers: Employer[]=[]
+  employers: Employer[] = []
   // workTypes: JobAdvertisement[]=[]
 
   constructor(private formBuilder: FormBuilder,
@@ -28,7 +28,7 @@ export class JobAdvertisementAddComponent implements OnInit {
     private jobPositionService: JobPositionService,
     private jobAdvertisementService: JobAdvertisementService,
     private toastrService: ToastrService,
-    private employerService:EmployerService
+    private employerService: EmployerService
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +53,6 @@ export class JobAdvertisementAddComponent implements OnInit {
       workTime: ["", Validators.required],///part-time
     })
   }
-
   add() {
     if (this.jobAdvertisementForm.valid) {
       this.jobAdvertisementService.add(this.jobAdvertisementForm.value).subscribe(
@@ -87,22 +86,10 @@ export class JobAdvertisementAddComponent implements OnInit {
     })
   }
 
-
-  getEmployers(){
-    this.employerService.getEmployers().subscribe((data:any)=>{
-      this.employers=data.data
+  getEmployers() {
+    this.employerService.getEmployers().subscribe((data: any) => {
+      this.employers = data.data
     })
   }
-
-  // getWorkTypes(){
-  //   this.jobAdvertisementService.getAll().subscribe((data:any)=>{
-  //     this.workTypes=data.data
-  //   })
-  // }
-
-
-
-  
-  
 
 }

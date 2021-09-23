@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobAdvertisement } from 'src/app/models/job-advertisement/jobAdvertisement';
-import { JobAdvertisementService } from 'src/app/services/job-advertisement-service';
+import { JobAdvertisementService } from 'src/app/services/job-advertisement.service';
 
 @Component({
   selector: 'app-activ-job-advert-by-employer',
