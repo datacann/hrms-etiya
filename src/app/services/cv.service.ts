@@ -16,4 +16,6 @@ export class CvService {
   add(cv:Cv):Observable<Cv[]>{
     return this.httpClient.post<Cv[]>(this.apiUrl + "/add",cv)
   }
+
+  
 }

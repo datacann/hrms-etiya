@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CandidateSchoolService } from 'src/app/services/candidate-school.service';
+import { CandidateService } from 'src/app/services/candidate.service';
 import { CvService } from 'src/app/services/cv.service';
 
 @Component({
@@ -13,37 +13,46 @@ export class CvAddComponent implements OnInit {
 
   constructor(private cvService:CvService,
     private formBuilder:FormBuilder,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    private candidateService: CandidateService,) { }
 
   cvAddForm:FormGroup
   candidate:any
+  candidateJobExperienceIds: number[] = [];
+  candidateLanguageIds: number[] = [];
+  candidateSchoolIds: number[] = [];
+  candidateSkillIds: number[] = [];
+  loggedUser: any;
 
   ngOnInit(): void {
     this.createCvAddForm()
-    console.log(this.getCandidateJObExperienceId())
-    console.log(this.getCandidateLanguageId())
+    console.log(this.getCandidateJobExperienceIds())
+    console.log(this.getCandidateLanguageIds())
+    console.log(this.getCandidateSkillIds())
+    console.log(this.getCandidateSkillIds())
+
+
   }
 
   createCvAddForm() {
     this.cvAddForm = this.formBuilder.group({
-      candidateJobExperienceIds: [this.getCandidateJObExperienceId()],
-      candidateLanguageIds:[this.getCandidateLanguageId()],
-      candidateSchoolIds: [this. getCandidateschoolId()],
-      candidateSkillIds: [this.getCandidateSkillsId()],
+      candidateId: [this.getUserId()],
+      candidateJobExperienceIds: [this.getCandidateJobExperienceIds()],
+      candidateLanguageIds:[this.getCandidateLanguageIds()],
+      candidateSchoolIds: [this. getCandidateSchoolIds()],
+      candidateSkillIds: [this.getCandidateSkillIds()],
       coverLetter: ['', Validators.required],
       title: ['', Validators.required],
-      linkedinAccount:['', Validators.required],
-      githubAccount:['', Validators.required],
+
     });
   }
 
   cvAdd() {
     if (this.cvAddForm.valid) {
-    
+      console.log(this.cvAddForm.value)
        this.cvService.add(this.cvAddForm.value).subscribe(
          (response: any) => {
            console.log(this.cvAddForm.value);
-           
            this.toastrService.success(response.message, 'CV eklendi');
          },
          (responseError) => {
@@ -58,24 +67,48 @@ export class CvAddComponent implements OnInit {
     }
   } 
 
-  getCandidateJObExperienceId():any{
-    this.candidate = JSON.parse(localStorage.getItem('user'))
-    return this.candidate.data.candidateJobExperiences
+  getCandidateJobExperienceIds(): number[] {
+    this.candidateService
+      .getCandidateById(this.getUserId())
+      .subscribe((response: any) => {
+        for (let i = 0; i < response.data.candidateJobExperiences.length; i++) {
+          this.candidateJobExperienceIds[i] = response.data.candidateJobExperiences[i].id;
+        }
+      });
+    return this.candidateJobExperienceIds;
   }
 
-  getCandidateLanguageId():any{
-    this.candidate = JSON.parse(localStorage.getItem('user'))
-    return this.candidate.data.candidateLanguages
+  getCandidateLanguageIds(): number[] {
+    this.candidateService.getCandidateById(this.getUserId()).subscribe((response: any) => {
+        for (let i = 0; i < response.data.candidateLanguages.length; i++) {
+          this.candidateLanguageIds[i] = response.data.candidateLanguages[i].id;
+        }
+      });
+    return this.candidateLanguageIds;
   }
 
-  getCandidateschoolId():any{
-    this.candidate = JSON.parse(localStorage.getItem('user'))
-    return this.candidate.candidateSchools
+  getCandidateSchoolIds(): number[] {
+    this.candidateService.getCandidateById(this.getUserId()).subscribe((response: any) => {
+        for (let i = 0; i < response.data.candidateSchools.length; i++) {
+          this.candidateSchoolIds[i] = response.data.candidateSchools[i].id;
+        }
+      });
+    return this.candidateSchoolIds;
   }
 
-  getCandidateSkillsId():any{
-    this.candidate = JSON.parse(localStorage.getItem('user'))
-    return this.candidate.data.candidateSkills
+  getCandidateSkillIds(): number[] {
+    this.candidateService.getCandidateById(this.getUserId()).subscribe((response: any) => {
+        for (let i = 0; i < response.data.candidateSkills.length; i++) {
+          this.candidateSkillIds[i] = response.data.candidateSkills[i].id;
+        }
+      });
+    return this.candidateSkillIds;
   }
 
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
+  }
 }
+
+

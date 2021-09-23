@@ -1,35 +1,33 @@
+<h2 style="margin-top: 30px;" >CV nizi Oluşturun</h2>
+
 <form [formGroup]="cvAddForm">
-<div class="mb-3">
-  <label>CV Title</label>
-  <input type="text" placeholder="cvTitle" formControlName="title" class="form-control" />
-</div>
+
+<app-candidate-image></app-candidate-image>
+<app-candidate-school></app-candidate-school>
+<app-candidate-skill></app-candidate-skill>
+<app-candidate-language></app-candidate-language>
+<app-candidate-experience></app-candidate-experience>
+<app-candidate-linkedin></app-candidate-linkedin>
+<app-candidate-github></app-candidate-github>
+
+
+  <div class="mb-3">
+    <label>CV Title</label>
+    <input type="text" placeholder="cvTitle" formControlName="title" class="form-control" />
+  </div>
 
 <div class="input-group">
   <span class="input-group-text">cover letter</span>
   <textarea class="form-control" aria-label="With textarea" formControlName="coverLetter"></textarea>
 </div>
 
-<div class="mb-3">
-  <label>Enter Github Link</label>
-  <input type="text" placeholder="githubAccount" formControlName="githubAccount" class="form-control" />
-</div>
 
-<div class="mb-3">
-  <label>Enter Linkedin</label>
-  <input type="text" placeholder="linkedinAccount" formControlName="linkedinAccount" class="form-control" />
-</div>
+
 <div class="card-footer">
   <button [disabled]="!cvAddForm.valid" (click)="cvAdd()" class="btn btn-primary">
     Add
   </button>
 </div>
 </form>
-
-<app-candidate-school></app-candidate-school>
-<app-candidate-experience></app-candidate-experience>
-<app-candidate-skill></app-candidate-skill>
-<app-candidate-language></app-candidate-language>
-<app-candidate-image></app-candidate-image>
-
 
   

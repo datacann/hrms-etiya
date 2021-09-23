@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidate } from '../models/candidate/candidate';
+import { CandidateListResponse } from '../models/candidate/candidateListResponse';
+import { GitHub } from '../models/github/github';
+import { LinkedIn } from '../models/linkedin/linkedin';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +25,18 @@ export class CandidateService {
 
   getCandidates():Observable<Candidate[]>{ 
     return this.httpClient.get<Candidate[]>(this.apiUrl+"/get/all")
+  }
+
+  addGithub(gitHub:GitHub,id:number):Observable<GitHub>{
+    return this.httpClient.put<GitHub>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub.githubAccount,gitHub)
+  }
+
+  addLinked(linked:LinkedIn,id:number):Observable<LinkedIn>{
+    return this.httpClient.put<LinkedIn>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linked.linkedInAccount,linked)
+  }
+
+  getCandidateById(id: number): Observable<CandidateListResponse> {
+    return this.httpClient.get<CandidateListResponse>(this.apiUrl + '/get/byId?candId=' + id);
   }
 
 }
