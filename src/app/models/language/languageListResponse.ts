@@ -1,4 +1,4 @@
 import { ListResponseModel } from "../response/listResponseModel";
 import { Language } from "./language";
 
-export interface CandidateLanguageResponce extends ListResponseModel<Language> {}
+export interface LanguageListResponse extends ListResponseModel<Language> {}

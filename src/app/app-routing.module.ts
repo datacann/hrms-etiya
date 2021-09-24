@@ -5,6 +5,7 @@ import { CandidateListComponent } from './features/candidate/candidate-list/cand
 import { CandidateSchoolComponent } from './features/candidate/candidate-school/candidate-school.component';
 import { CandidateSignComponent } from './features/candidate/candidate-sign/candidate-sign.component';
 import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
+import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:"candidateSchool",component:CandidateSchoolComponent},
   {path:"cv",component:CvAddComponent},
   {path:"imageUpload",component:CandidateImageComponent},
+  {path:"cvDetail",component:CvDetailComponent},
   
   
 ];

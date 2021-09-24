@@ -17,5 +17,9 @@ export class CvService {
     return this.httpClient.post<Cv[]>(this.apiUrl + "/add",cv)
   }
 
+  getById(id:number):Observable<Cv[]>{
+    return this.httpClient.post<Cv[]>(this.apiUrl + "/get/byId?cvId=",id)
+  }
+
   
 }

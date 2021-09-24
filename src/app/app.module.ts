@@ -28,6 +28,7 @@ import { CandidateLanguageComponent } from './features/candidate/candidate-langu
 import { CandidateImageComponent } from './features/candidate/candidate-image/candidate-image.component';
 import { CandidateGithubComponent } from './features/candidate/candidate-links/candidate-github/candidate-github.component';
 import { CandidateLinkedinComponent } from './features/candidate/candidate-links/candidate-linkedin/candidate-linkedin.component';
+import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 
 
 
@@ -55,6 +56,7 @@ import { CandidateLinkedinComponent } from './features/candidate/candidate-links
     CandidateImageComponent,
     CandidateGithubComponent,
     CandidateLinkedinComponent,
+    CvDetailComponent,
     
   ],
   imports: [
