@@ -29,6 +29,9 @@ import { CandidateImageComponent } from './features/candidate/candidate-image/ca
 import { CandidateGithubComponent } from './features/candidate/candidate-links/candidate-github/candidate-github.component';
 import { CandidateLinkedinComponent } from './features/candidate/candidate-links/candidate-linkedin/candidate-linkedin.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';
+import { SideMenuComponent } from './features/side-menu/side-menu.component';
 
 
 
@@ -57,6 +60,7 @@ import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
     CandidateGithubComponent,
     CandidateLinkedinComponent,
     CvDetailComponent,
+    SideMenuComponent,
     
   ],
   imports: [
@@ -66,7 +70,9 @@ import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({positionClass:"toast-bottom-right"})
+    AccordionModule,
+    ToastrModule.forRoot({positionClass:"toast-bottom-right"}),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

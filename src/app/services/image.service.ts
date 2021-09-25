@@ -14,4 +14,8 @@ export class ImageService {
 upload(image: Image, userId: number): Observable<Image> {
   return this.httpClient.post<Image>(this.apiUrl + '/upload?userId=' + userId,image);
 }
+
+getImageById(id:number):Observable<Image>{
+  return this.httpClient.get<Image>(this.apiUrl+"https://javareactcamp-hrms-backend.herokuapp.com/api/images/get/byId?imgId="+id)
+}
 }

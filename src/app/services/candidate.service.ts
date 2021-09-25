@@ -28,11 +28,11 @@ export class CandidateService {
   }
 
   addGithub(gitHub:GitHub,id:number):Observable<GitHub>{
-    return this.httpClient.put<GitHub>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub.githubAccount,gitHub)
+    return this.httpClient.post<GitHub>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub.githubAccount,gitHub)
   }
 
   addLinked(linked:LinkedIn,id:number):Observable<LinkedIn>{
-    return this.httpClient.put<LinkedIn>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linked.linkedInAccount,linked)
+    return this.httpClient.post<LinkedIn>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linked.linkedInAccount,linked)
   }
 
   getCandidateById(id: number): Observable<CandidateListResponse> {

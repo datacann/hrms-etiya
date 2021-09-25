@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CandidateListResponse } from '../models/candidate/candidateListResponse';
 import { Cv } from '../models/cv/cv';
 
 @Injectable({
@@ -17,9 +18,14 @@ export class CvService {
     return this.httpClient.post<Cv[]>(this.apiUrl + "/add",cv)
   }
 
-  getById(id:number):Observable<Cv[]>{
-    return this.httpClient.post<Cv[]>(this.apiUrl + "/get/byId?cvId=",id)
+  getById(id:number):Observable<CandidateListResponse>{
+    return this.httpClient.post<CandidateListResponse>(this.apiUrl + "/get/byId?cvId=",id)
   }
+
+  getCvs():Observable<Cv>{
+    return this.httpClient.get<Cv>(this.apiUrl+"/get/all");
+  }
+
 
   
 }

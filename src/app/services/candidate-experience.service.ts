@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CandidateExperience } from '../models/candidate/candidate-experience/candidateExperience';
+import { CandidateJobExperienceListResponse } from '../models/candidate/candidate-experience/candidateExperienceList';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,11 @@ export class CandidateExperienceService {
 
   add(candidateExperience:CandidateExperience){
     return this.httpClient.post(this.apiUrl + "/add",candidateExperience)
+  }
+
+  getCandidatesByQuitYear(sortDirection: number): Observable<CandidateJobExperienceListResponse> {
+    return this.httpClient.get<CandidateJobExperienceListResponse>(
+      this.apiUrl + '/get/byQuitYear?sortDirection=' + sortDirection
+    );
   }
 }
