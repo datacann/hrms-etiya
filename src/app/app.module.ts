@@ -34,7 +34,7 @@ import {MenuItem} from 'primeng/api';
 import { SideMenuComponent } from './features/side-menu/side-menu.component';
 import { VerificateJobAdvertComponent } from './features/job-advertisement/verificate-job-advert/verificate-job-advert.component';
 import {TableModule} from 'primeng/table';
-
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -75,6 +75,7 @@ import {TableModule} from 'primeng/table';
     BrowserAnimationsModule,
     AccordionModule,
     TableModule,
+    ButtonModule,
     ToastrModule.forRoot({positionClass:"toast-bottom-right"}),
 
   ],

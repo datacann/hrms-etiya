@@ -18,6 +18,9 @@ export class CandidateSchoolComponent implements OnInit {
   departments:Department[]=[]
   schools:School[]=[]
   candidate:any
+  loading:boolean=true
+  candidateSchools: School[] = [];
+  loggedUser: any;
 
   constructor(private candidateSchoolService:CandidateSchoolService,
               private formBuilder:FormBuilder,
@@ -29,6 +32,7 @@ export class CandidateSchoolComponent implements OnInit {
     this.createCandidateSchoolForm()
     this.getDepartments()
     this.getSchools()
+    this.getCandidateByGradYear();
     
   }
 
@@ -80,5 +84,22 @@ getSchools(){
    this.candidate = JSON.parse(localStorage.getItem('user'))
    return this.candidate.data.id
  }
+
+ getUserId(): number {
+  this.loggedUser = JSON.parse(localStorage.getItem('user'));
+  return this.loggedUser.data.id;
+}
+
+ getCandidateByGradYear() {
+  this.candidateSchoolService
+    .getCandidatesByGradYear(-1)
+    .subscribe((response: any) => {
+      response.data = response.data.filter(
+        (r) => r.candidate.id === this.getUserId()
+      );
+      this.candidateSchools = response.data;
+      this.loading = false;
+    });
+}
 
 }

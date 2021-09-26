@@ -1,4 +1,5 @@
 import { Cv } from "../cv/cv";
+import { Image } from "../image/image";
 import { LanguageListResponse } from "../language/languageListResponse";
 import { SchoolListResponse } from "../school/schoolListResponse";
 import { SkillListResponse } from "../skill/skillListResponse";
@@ -9,6 +10,7 @@ export interface Candidate{
     firstName:string
     lastName:string
     email:string
+    profileImg?: any;
     password:string
     birthYear:number
     nationalityId:string
@@ -19,5 +21,5 @@ export interface Candidate{
     cvs: Cv[];
     githubAccount:string
     linkedinAccount:string
-    images: [];
+    images: Image[];
 }
