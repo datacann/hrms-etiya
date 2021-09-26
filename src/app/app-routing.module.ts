@@ -13,6 +13,7 @@ import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/act
 import { ActiveJobAdvertListComponent } from './features/job-advertisement/active-job-advert-list/active-job-advert-list.component';
 import { CloseJobAdvertisementComponent } from './features/job-advertisement/close-job-advertisement/close-job-advertisement.component';
 import { JobAdvertisementAddComponent } from './features/job-advertisement/job-advertisement-add/job-advertisement-add.component';
+import { VerificateJobAdvertComponent } from './features/job-advertisement/verificate-job-advert/verificate-job-advert.component';
 import { JobPositionAddComponent } from './features/job/job-position-add/job-position-add.component';
 import { JobPositionListComponent } from './features/job/job-position-list/job-position-list.component';
 import { LoginComponent } from './features/login/login/login.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:"cv",component:CvAddComponent},
   {path:"imageUpload",component:CandidateImageComponent},
   {path:"cvDetail",component:CvDetailComponent},
+  {path:"verification",component:VerificateJobAdvertComponent},
   
   
 ];

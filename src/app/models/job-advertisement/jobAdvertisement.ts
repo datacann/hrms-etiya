@@ -19,5 +19,6 @@ export  interface JobAdvertisement{
     companyName:string
     createdAt:string
     active:boolean
+    verified: boolean;
     
 }

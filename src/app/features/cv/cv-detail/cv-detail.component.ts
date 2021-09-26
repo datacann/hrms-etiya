@@ -79,8 +79,7 @@ export class CvDetailComponent implements OnInit {
 
   getCandidateByGradYear() {
     this.candidateSchoolService.getCandidatesByGradYear(-1).subscribe((response: any) => {
-        response.data = response.data.filter(
-          (r) => r.candidate.id === this.getUserId()
+        response.data = response.data.filter((r) => r.candidate.id === this.getUserId()
           );
           this.candidateSchools = response.data;
       });

@@ -32,6 +32,8 @@ import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';
 import { SideMenuComponent } from './features/side-menu/side-menu.component';
+import { VerificateJobAdvertComponent } from './features/job-advertisement/verificate-job-advert/verificate-job-advert.component';
+import {TableModule} from 'primeng/table';
 
 
 
@@ -61,6 +63,7 @@ import { SideMenuComponent } from './features/side-menu/side-menu.component';
     CandidateLinkedinComponent,
     CvDetailComponent,
     SideMenuComponent,
+    VerificateJobAdvertComponent,
     
   ],
   imports: [
@@ -71,6 +74,7 @@ import { SideMenuComponent } from './features/side-menu/side-menu.component';
     FormsModule,
     BrowserAnimationsModule,
     AccordionModule,
+    TableModule,
     ToastrModule.forRoot({positionClass:"toast-bottom-right"}),
 
   ],

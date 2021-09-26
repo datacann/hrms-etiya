@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JobAdvertisement } from '../models/job-advertisement/jobAdvertisement';
+import { JobAdvertisementListResponse } from '../models/job-advertisement/jobAdvertisementListResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +35,17 @@ export class JobAdvertisementService {
   }
 
   closeJobAdvertisement(jobAdvertisement:JobAdvertisement):Observable<JobAdvertisement>{
-    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/activation?jobAdvId=" + 
-                                                  jobAdvertisement.id + "&status=" + 
-                                                 !jobAdvertisement.active,jobAdvertisement )
+    return this.httpClient.put<JobAdvertisement>
+    (this.apiUrl + "/update/activation?jobAdvId=" + jobAdvertisement.id + "&status=" + !jobAdvertisement.active,jobAdvertisement )
   }
 
+  getUnverifiedJobAdverts(sortDirection: number):Observable<JobAdvertisementListResponse[]> {
+    return this.httpClient.get<JobAdvertisementListResponse[]>(this.apiUrl + '/get/unverified?sortDirection=' + sortDirection);
+  }
 
+  changeVerificationJobAdverts(jobAdvertisement: JobAdvertisement): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>
+    (this.apiUrl +'/update/verification?jobAdvId=' +jobAdvertisement.id +'&status=' +!jobAdvertisement.verified,jobAdvertisement
+    );
+  }
 }
