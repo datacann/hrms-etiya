@@ -4,10 +4,12 @@ import { CandidateImageComponent } from './features/candidate/candidate-image/ca
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 import { CandidateSchoolComponent } from './features/candidate/candidate-school/candidate-school.component';
 import { CandidateSignComponent } from './features/candidate/candidate-sign/candidate-sign.component';
+import { CandidateSchoolUpdateComponent } from './features/candidate/candidate-update/candidate-school-update/candidate-school-update.component';
 import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
+import { HomeComponent } from './features/home/home.component';
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
 import { ActiveJobAdvertListComponent } from './features/job-advertisement/active-job-advert-list/active-job-advert-list.component';
@@ -21,10 +23,10 @@ import { CandidateListGuard } from './guards/candidate-list/candidate-list.guard
 import { ChangeActivityJobAdvertGuard } from './guards/change-activity-job-advert/change-activity-job-advert.guard';
 import { JobAdversitementAddGuard } from './guards/job-advertisement-add/job-adversitement-add.guard';
 import { JobPositionAddGuard } from './guards/job-position-add/job-position-add.guard';
-import { CvService } from './services/cv.service';
 
 const routes: Routes = [
   // {path:"candidateList",component:CandidateListComponent},
+  {path:"", pathMatch:"full", component:HomeComponent},
   {path:"candidateAdd",component:CandidateSignComponent},
   {path:"candidateList",component:CandidateListComponent,canActivate:[CandidateListGuard]},
   {path:"employerList",component:EmployerListComponent},
@@ -42,6 +44,7 @@ const routes: Routes = [
   {path:"imageUpload",component:CandidateImageComponent},
   {path:"cvDetail",component:CvDetailComponent},
   {path:"verification",component:VerificateJobAdvertComponent},
+  {path:"updateDepartment",component:CandidateSchoolUpdateComponent},
   
   
 ];

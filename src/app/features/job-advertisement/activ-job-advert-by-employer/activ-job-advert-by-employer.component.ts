@@ -10,6 +10,7 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
 export class ActivJobAdvertByEmployerComponent implements OnInit {
 
   activeJobsByEmployer : JobAdvertisement[]=[]
+  loading:boolean = true
 
   constructor(private jobAdvertisementService:JobAdvertisementService) { }
 
@@ -21,6 +22,7 @@ export class ActivJobAdvertByEmployerComponent implements OnInit {
     this.jobAdvertisementService.getActiveJobByDate().subscribe((data:any)=>{
       this.activeJobsByEmployer = data.data
       console.log(this.activeJobsByEmployer)
+      this.loading=false
     })
 
   }

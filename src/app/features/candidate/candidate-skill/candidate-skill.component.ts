@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Skill } from 'src/app/models/skill/skill';
 import { CandidateSkillService } from 'src/app/services/candidate-skill.service';
+import { CandidateService } from 'src/app/services/candidate.service';
 import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
@@ -15,15 +16,20 @@ export class CandidateSkillComponent implements OnInit {
   candidateSkillForm: FormGroup
   candidate:any
   skills: Skill[] = [];
+  loggedUser: any;
+  candidateSkills: Skill[] = [];
+  loading: boolean = true;
 
   constructor(private toastrService:ToastrService,
               private candidateSkillService:CandidateSkillService,
               private formBuilder:FormBuilder,
-              private skillService:SkillService) { }
+              private skillService:SkillService,
+              private candidateService: CandidateService,) { }
 
   ngOnInit(): void {
     this.createCandidateSkillForm()
-    this.getSkills();
+    this.getSkills(); 
+    this.getCandidateSkills();
   }
 
   createCandidateSkillForm(){
@@ -62,5 +68,20 @@ export class CandidateSkillComponent implements OnInit {
       this.skills = data.data;
     });
   }
+
+  getCandidateSkills() {
+    this.candidateService
+      .getCandidateById(this.getUserId())
+      .subscribe((response: any) => {
+        this.candidateSkills = response.data.candidateSkills;
+        this.loading = false;
+      });
+  }
+
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
+  }
+
  
 }

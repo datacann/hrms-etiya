@@ -1,5 +1,6 @@
 export interface CandidateExperience{
-    candidateId: number,
+    id:number
+  candidateId: number,
     positionId: number,
     quitYear: number,
     startYear: number,

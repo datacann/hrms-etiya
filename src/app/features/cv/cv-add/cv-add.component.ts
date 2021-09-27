@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CandidateService } from 'src/app/services/candidate.service';
@@ -10,6 +10,8 @@ import { CvService } from 'src/app/services/cv.service';
   styleUrls: ['./cv-add.component.css']
 })
 export class CvAddComponent implements OnInit {
+
+ 
 
   constructor(private cvService:CvService,
     private formBuilder:FormBuilder,
@@ -23,6 +25,7 @@ export class CvAddComponent implements OnInit {
   candidateSchoolIds: number[] = [];
   candidateSkillIds: number[] = [];
   loggedUser: any;
+
 
   ngOnInit(): void {
     this.createCvAddForm()

@@ -33,3 +33,65 @@
       </div>
     </div>
   </div>
+
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Skill</div>
+
+    <p-table
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="candidateSkills"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Skills
+            </div>
+          </th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-skill>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">Skill</span>
+            {{ skill.skill.name }}
+          </td>
+
+
+          <td>
+            <button pButton type="button" label="Güncelle" class="p-button-raised p-button-rounded"></button>
+          </td>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No schools found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >

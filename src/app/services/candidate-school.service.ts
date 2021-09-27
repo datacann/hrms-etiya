@@ -21,4 +21,10 @@ export class CandidateSchoolService {
     return this.httpClient.get<SchoolListResponse>(this.apiUrl + '/get/byGradYear?sortDirection=' + sortDirection);
   }
 
+  updateDepartment(candidate:CandidateSchool):Observable<SchoolListResponse>{
+    return this.httpClient.put<SchoolListResponse>
+    (this.apiUrl + "/update/department?candSchId=" + candidate.schoolId + "&departmentId=" + candidate.departmentId,candidate)
+  }
+
+
 }

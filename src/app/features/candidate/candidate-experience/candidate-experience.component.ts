@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CandidateExperience } from 'src/app/models/candidate/candidate-experience/candidateExperience';
 import { JobPosition } from 'src/app/models/jobPosition/jobPosition';
 import { CandidateExperienceService } from 'src/app/services/candidate-experience.service';
 import { JobPositionService } from 'src/app/services/job-position.service';
@@ -15,6 +16,11 @@ export class CandidateExperienceComponent implements OnInit {
   candidateExperienceForm:FormGroup
   candidate:any
   positions:JobPosition[] = []
+  loading:boolean=true
+  loggedUser: any
+  candidateExperiences: CandidateExperience[] = [];
+  candidateJobExperience: CandidateExperience;
+  
 
   constructor(private toastrService:ToastrService,
               private candidateExperienceService:CandidateExperienceService,
@@ -25,6 +31,7 @@ export class CandidateExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.createCandidateExperienceForm()
     this.getJobPositions()
+    this.getCandidateByQuitYear()
     
     
   }
@@ -69,6 +76,23 @@ export class CandidateExperienceComponent implements OnInit {
     this.jobPositionService.getJobPositions().subscribe((data:any)=>{
      this.positions = data.data
     })
+  }
+
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
+  }
+  
+  getCandidateByQuitYear() {
+    this.candidateExperienceService
+      .getCandidatesByQuitYear(-1)
+      .subscribe((response: any) => {
+        response.data = response.data.filter(
+          (r) => r.candidate.id === this.getUserId()
+        );
+        this.candidateExperiences = response.data;
+        this.loading = false;
+      });
   }
  
 }

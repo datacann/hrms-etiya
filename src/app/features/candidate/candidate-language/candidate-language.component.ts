@@ -16,7 +16,10 @@ export class CandidateLanguageComponent implements OnInit {
   languages: Language[] = []
 
   candidateId: any
+  loading:boolean=true
   candidateLanguageForm: FormGroup
+  candidateLanguages: Language[] = [];
+  loggedUser: any;
 
 
   constructor(private languageService: LanguageService,
@@ -29,6 +32,7 @@ export class CandidateLanguageComponent implements OnInit {
     this.getLanguages()
     this.getCandidateId()
     this.createLanguageForm()
+    this.getCandidateLanguages();
 
   }
 
@@ -70,5 +74,20 @@ export class CandidateLanguageComponent implements OnInit {
     this.candidateId = JSON.parse(localStorage.getItem('user'))
     return this.candidateId.data.id
   }
+
+  getCandidateLanguages() {
+    this.candidateService
+      .getCandidateById(this.getUserId())
+      .subscribe((response: any) => {
+        this.candidateLanguages = response.data.candidateLanguages;
+        this.loading = false;
+      });
+  }
+
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
+  }
+
 
 }
