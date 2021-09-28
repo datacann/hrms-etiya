@@ -37,6 +37,8 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { CandidateSchoolUpdateComponent } from './features/candidate/candidate-update/candidate-school-update/candidate-school-update.component';
 import { HomeComponent } from './features/home/home.component';
+import { NaviUserInfoComponent } from './features/navi-user-info/navi-user-info.component';
+import { NaviLoginComponent } from './features/navi-login/navi-login.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import { HomeComponent } from './features/home/home.component';
     VerificateJobAdvertComponent,
     CandidateSchoolUpdateComponent,
     HomeComponent,
+    NaviUserInfoComponent,
+    NaviLoginComponent,
     
   ],
   imports: [

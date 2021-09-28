@@ -1,19 +1,17 @@
-<!-- <app-home></app-home> -->
-<app-navi></app-navi>
-  <div class="container">
-    <div class="row">
-      
-      <div class="row">
-  
 
-</div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-       
-      </div>
-      <div class="col-md-9 border">
-        <router-outlet> </router-outlet>
-      </div>
-    </div>
+
+  
+<div *ngIf="changenavi().length>0 ; else item2  ">
+  <app-navi></app-navi>
+  <div class="row">
+    <router-outlet></router-outlet>
   </div>
+</div>
+
+<ng-template #item2>
+   <app-cv-add></app-cv-add>
+</ng-template>
+
+
+
+

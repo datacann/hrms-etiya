@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hrms';
+  loggedUser:any
+
+
+  changenavi(){
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser
+  }
+
 }

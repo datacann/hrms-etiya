@@ -12,4 +12,12 @@ export class NaviComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkUser():boolean{
+    if (localStorage.getItem("user")) {
+      return true
+    }else{
+      return false
+    }
+  }
+
 }
