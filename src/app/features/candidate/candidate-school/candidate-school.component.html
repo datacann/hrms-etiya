@@ -123,11 +123,9 @@
             >
             <span *ngIf="!school.graduationYear">Present</span>
           </td>
-
           <td>
-            <button pButton type="button" label="Güncelle" class="p-button-raised p-button-rounded" routerLink="/updateDepartment"></button>
+            <button (click)="deleteSchool(school.id)" >asdfdgf</button>
           </td>
-          
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

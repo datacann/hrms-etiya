@@ -9,6 +9,9 @@ import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
+import { UpdateCompanyNameComponent } from './features/employers/employer-update/update-company-name/update-company-name.component';
+import { UpdateEmailPasswordComponent } from './features/employers/employer-update/update-email-password/update-email-password.component';
+import { UpdatePhoneNumberComponent } from './features/employers/employer-update/update-phone-number/update-phone-number.component';
 import { HomeComponent } from './features/home/home.component';
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
@@ -27,6 +30,9 @@ import { JobPositionAddGuard } from './guards/job-position-add/job-position-add.
 const routes: Routes = [
   // {path:"candidateList",component:CandidateListComponent},
   {path:"", pathMatch:"full", component:HomeComponent},
+  {path:"companyName",component:UpdateCompanyNameComponent},
+  {path:"phoneNumber",component:UpdatePhoneNumberComponent},
+  {path:"webSiteAndEmail",component:UpdateEmailPasswordComponent},
   {path:"candidateAdd",component:CandidateSignComponent},
   {path:"candidateList",component:CandidateListComponent,canActivate:[CandidateListGuard]},
   {path:"employerList",component:EmployerListComponent},
@@ -38,7 +44,7 @@ const routes: Routes = [
   {path:"activeJobAdvertList",component:ActiveJobAdvertListComponent},
   {path:"activeJobAdvertListByDate",component:ActiveJobAdvertByDateComponent},
   {path:"activeJobAdvertListByEmployer",component:ActivJobAdvertByEmployerComponent},
-  {path:"changeActivite",component:CloseJobAdvertisementComponent,canActivate:[ChangeActivityJobAdvertGuard]},
+  {path:"changeActivite",component:CloseJobAdvertisementComponent},
   {path:"candidateSchool",component:CandidateSchoolComponent},
   {path:"cv",component:CvAddComponent},
   {path:"imageUpload",component:CandidateImageComponent},

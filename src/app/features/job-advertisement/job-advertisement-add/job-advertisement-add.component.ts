@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { workTimes } from 'src/app/models/candidate/workTime';
+import { workTypes } from 'src/app/models/candidate/workTypes';
 import { City } from 'src/app/models/cities/city';
 import { Employer } from 'src/app/models/employer/employer';
 import { JobAdvertisement } from 'src/app/models/job-advertisement/jobAdvertisement';
@@ -21,6 +23,8 @@ export class JobAdvertisementAddComponent implements OnInit {
   positions: JobPosition[] = []
   cities: City[] = []
   employers: Employer[] = []
+  workModels=workTypes
+  workTimes=workTimes
   // workTypes: JobAdvertisement[]=[]
 
   constructor(private formBuilder: FormBuilder,

@@ -26,5 +26,8 @@ export class CandidateSchoolService {
     (this.apiUrl + "/update/department?candSchId=" + candidate.schoolId + "&departmentId=" + candidate.departmentId,candidate)
   }
 
+  deleteById(schlId: number): Observable<CandidateSchool> {
+    return this.httpClient.delete<CandidateSchool>(this.apiUrl + '/delete/byId?candSchId=' + schlId);
+  }
 
 }

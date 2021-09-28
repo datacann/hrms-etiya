@@ -16,4 +16,8 @@ export class CandidateSkillService {
   add(candidateSkill:CandidateSkill):Observable<CandidateSkill[]>{
     return this.httpClient.post<CandidateSkill[]>(this.apiUrl+ "/add", candidateSkill)
   }
+
+  deleteById(skillId: number): Observable<CandidateSkill> {
+    return this.httpClient.delete<CandidateSkill>(this.apiUrl + '/delete/byId?candSkillId=' + skillId);
+  }
 }

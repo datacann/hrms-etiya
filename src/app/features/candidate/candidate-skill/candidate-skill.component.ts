@@ -70,9 +70,7 @@ export class CandidateSkillComponent implements OnInit {
   }
 
   getCandidateSkills() {
-    this.candidateService
-      .getCandidateById(this.getUserId())
-      .subscribe((response: any) => {
+    this.candidateService.getCandidateById(this.getUserId()).subscribe((response: any) => {
         this.candidateSkills = response.data.candidateSkills;
         this.loading = false;
       });
@@ -81,6 +79,17 @@ export class CandidateSkillComponent implements OnInit {
   getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
+  }
+
+  deleteSkill(skillId: number) {
+    this.candidateSkillService.deleteById(skillId).subscribe((response: any) => {
+        this.toastrService.warning('Delete successful');
+        this.pageReloadDelay();
+      });
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 
  

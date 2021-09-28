@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Candidate } from '../models/candidate/candidate';
 import { CandidateListResponse } from '../models/candidate/candidateListResponse';
 import { GitHub } from '../models/github/github';
+import { JobAdvertisement } from '../models/job-advertisement/jobAdvertisement';
 import { LinkedIn } from '../models/linkedin/linkedin';
 
 @Injectable({
@@ -39,4 +40,31 @@ export class CandidateService {
     return this.httpClient.get<CandidateListResponse>(this.apiUrl + '/get/byId?candId=' + id);
   }
 
+  addFavoriteJob(
+    candidate: Candidate,
+    jobAdvId: number
+  ): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(
+      this.apiUrl +
+        '/update/favoriteJobAdvs/add?candId=' +
+        candidate.id +
+        '&jobAdvId=' +
+        jobAdvId,
+      candidate
+    );
+  }
+
+  removeFavoriteJob(
+    candidate: Candidate,
+    jobAdvId: number
+  ): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(
+      this.apiUrl +
+        '/update/favoriteJobAdvs/remove?candId=' +
+        candidate.id +
+        '&jobAdvId=' +
+        jobAdvId,
+      candidate
+    );
+  }
 }

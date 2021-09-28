@@ -5,4 +5,5 @@ export interface Employer{
     password:string
     phoneNumber:string
     website:string
+    verified:boolean
 }

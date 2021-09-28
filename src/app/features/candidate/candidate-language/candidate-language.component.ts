@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LanguageLevels } from 'src/app/models/candidate/candidate-language/candidate.LanguageLevels';
 import { Language } from 'src/app/models/language/language';
 import { CandidateLanguageService } from 'src/app/services/candidate-language.service';
 import { CandidateService } from 'src/app/services/candidate.service';
@@ -20,6 +21,7 @@ export class CandidateLanguageComponent implements OnInit {
   candidateLanguageForm: FormGroup
   candidateLanguages: Language[] = [];
   loggedUser: any;
+  labguageLevels=LanguageLevels
 
 
   constructor(private languageService: LanguageService,
@@ -89,5 +91,14 @@ export class CandidateLanguageComponent implements OnInit {
     return this.loggedUser.data.id;
   }
 
+  deleteLanguage(langId: number) {
+    this.candidateLanguageService.deleteById(langId).subscribe((response: any) => {
+        this.toastrService.warning('Delete successful');
+        this.pageReloadDelay();
+      });
+  }
 
+ pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
 }

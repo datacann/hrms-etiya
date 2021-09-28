@@ -35,6 +35,13 @@ export class VerificateJobAdvertComponent implements OnInit {
     })
   }
 
+  changeActivite(jobAdvertisement:JobAdvertisement){
+    this.jobAdvertisementService.closeJobAdvertisement(jobAdvertisement).subscribe((response:any)=>{
+    })
+  }
+
+
+
 
 
  

@@ -39,6 +39,12 @@ import { CandidateSchoolUpdateComponent } from './features/candidate/candidate-u
 import { HomeComponent } from './features/home/home.component';
 import { NaviUserInfoComponent } from './features/navi-user-info/navi-user-info.component';
 import { NaviLoginComponent } from './features/navi-login/navi-login.component';
+import { CandidateExperienceDeleteComponent } from './features/candidate/delete/candidate-experience-delete/candidate-experience-delete.component';
+import { UpdateCompanyNameComponent } from './features/employers/employer-update/update-company-name/update-company-name.component';
+import { UpdatePhoneNumberComponent } from './features/employers/employer-update/update-phone-number/update-phone-number.component';
+import { UpdateEmailPasswordComponent } from './features/employers/employer-update/update-email-password/update-email-password.component';
+import { JobAdvertVerifyComponent } from './features/employee/job-advert-verify/job-advert-verify.component';
+import { JobAdvertAddFavouriteComponent } from './features/job-advertisement/job-advert-add-favourite/job-advert-add-favourite.component';
 
 
 @NgModule({
@@ -72,6 +78,13 @@ import { NaviLoginComponent } from './features/navi-login/navi-login.component';
     HomeComponent,
     NaviUserInfoComponent,
     NaviLoginComponent,
+    CandidateExperienceDeleteComponent,
+    UpdateCompanyNameComponent,
+    UpdatePhoneNumberComponent,
+    UpdateEmailPasswordComponent,
+    JobAdvertVerifyComponent,
+    JobAdvertAddFavouriteComponent
+    
     
   ],
   imports: [

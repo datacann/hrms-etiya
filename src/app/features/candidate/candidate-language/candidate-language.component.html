@@ -8,9 +8,6 @@
         Dil Bilgisi Ekle
       </button>
     </div>
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -25,9 +22,12 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label>Seviye</label>
-                <input type="text" placeholder="languageLevel" formControlName="languageLevel" class="form-control"  />
-            </div>
+              <label>Dil</label>
+              <select  class="form-select" formControlName="languageLevel" >
+                <option value="" disabled>languageLevel </option>
+                 <option *ngFor="let language of labguageLevels"  >{{language.level}}</option>  
+              </select>
+          </div>
            
         </form>
         </div>
@@ -84,7 +84,7 @@
             {{ language.languagelevel }}
           </td>
           <td>
-            <button pButton type="button" label="Güncelle" class="p-button-raised p-button-rounded"></button>
+            <button (click)="deleteLanguage(language.id)" >asdfdgf</button>
           </td>
           
         </tr>

@@ -23,4 +23,8 @@ export class CandidateExperienceService {
       this.apiUrl + '/get/byQuitYear?sortDirection=' + sortDirection
     );
   }
+
+  deleteById(jobExpId: number,): Observable<CandidateExperience> {
+    return this.httpClient.delete<CandidateExperience>(this.apiUrl + '/delete/byId?candJobExpId=' + jobExpId);
+  }
 }

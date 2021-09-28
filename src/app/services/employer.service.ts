@@ -16,9 +16,30 @@ export class EmployerService {
     return this.httpClient.post(this.apiUrl + "/add",employer)
   }
 
-  getEmployers():Observable<Employer[]>{ //https://javareactcamp-hrms-backend.herokuapp.com/api/employers/get/all
+  getEmployers():Observable<Employer[]>{ 
     return this.httpClient.get<Employer[]>(this.apiUrl+"/get/all")
   }
+
+  getEmployerId():any{
+    return JSON.parse(localStorage.getItem('user')).data.id
+  }
+
+  updateCompanyName(employer:Employer){
+    return this.httpClient.put(this.apiUrl+"update/companyName?companyName="+employer.companyName+"&emplId="+employer.id,employer)
+  }
+
+  updateEmailAndWebsite(employer:Employer){
+    return this.httpClient.put(this.apiUrl+"update/emailAndWebsite?email="+employer.email+"&emplId="+employer.id+"&website="+employer.website,employer)
+  }
+
+  updatePhoneNumber(employer:Employer){
+    return this.httpClient.put(this.apiUrl+"update/phoneNumber?emplId="+employer.id+"&phoneNumber="+employer.phoneNumber,employer)
+  }
+
+  updateVerificaiton(employe:Employer){
+    return this.httpClient.put(this.apiUrl+"update/verification?emplId="+employe.id+"&status="+employe.verified,employe)
+  }
+
 
 
 }

@@ -84,15 +84,24 @@ export class CandidateExperienceComponent implements OnInit {
   }
   
   getCandidateByQuitYear() {
-    this.candidateExperienceService
-      .getCandidatesByQuitYear(-1)
-      .subscribe((response: any) => {
-        response.data = response.data.filter(
-          (r) => r.candidate.id === this.getUserId()
-        );
+    this.candidateExperienceService.getCandidatesByQuitYear(-1).subscribe((response: any) => {
+        response.data = response.data.filter((r) => r.candidate.id === this.getUserId());
         this.candidateExperiences = response.data;
         this.loading = false;
       });
   }
- 
+
+
+
+  deleteJobExperience(jobExpId: number) {
+    this.candidateExperienceService.deleteById(jobExpId).subscribe((response: any) => {
+        this.toastrService.warning('Delete successful');
+        this.pageReloadDelay()
+      });
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
+
 }

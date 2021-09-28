@@ -42,8 +42,10 @@
                         class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label>Work Model</label>
-                    <input type="text" placeholder="hybrid,office,internship,seasonal" formControlName="workModel" class="form-control" />
+                    <label>workModel</label>
+                    <select name="workModels" id="workModels" class="form-select" formControlName="workModel">
+                        <option *ngFor="let workModel of workModels" >{{workModel}}</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label>Position Name</label>
@@ -53,7 +55,9 @@
                 </div>
                 <div class="mb-3">
                     <label>Work Time</label>
-                    <input type="workTime" placeholder="full time,part time" formControlName="workTime" class="form-control" />
+                    <select name="workTimes" id="workTimes" class="form-select" formControlName="workTime">
+                        <option *ngFor="let workTime of workTimes" >{{workTime}}</option>
+                    </select>
                 </div>
             </form>
         </div>

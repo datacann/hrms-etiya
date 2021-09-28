@@ -100,5 +100,16 @@ getSchools(){
     });
 }
 
+deleteSchool(schlId: number) {
+  this.candidateSchoolService.deleteById(schlId).subscribe((response: any) => {
+      this.toastrService.warning('Delete successful');
+      this.pageReloadDelay();
+    });
+}
+
+pageReloadDelay() {
+  setTimeout(location.reload.bind(location), 1000);
+}
+
 
 }

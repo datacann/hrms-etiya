@@ -1,53 +1,6 @@
-<!-- <div class="content">
-    <div class="card">
-        <div class="card-header">
-            <h5>Kayıt Ol</h5>
-        </div>
-        <div class="card-body">
-            <form [formGroup]="candidateAddForm">
-                <div class="mb-3">
-                    <label>FIRST NAME</label>
-                    <input type="text" placeholder="First Name" formControlName="firstName" class="form-control" />
-
-                </div>
-                <div class="mb-3">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="last name" formControlName="lastName" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label>e-mail</label>
-                    <input type="email" placeholder="e-mail" formControlName="email" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label>Nationality Number</label>
-                    <input type="text" placeholder="Nationality Number" formControlName="nationalityId" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label>Birth Year</label>
-                    <input type="number" placeholder="Password" formControlName="birthYear" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label>Password</label>
-                    <input type="password" placeholder="Password" formControlName="password" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label>Password Again</label>
-                    <input type="password" placeholder="password" formControlName="password" class="form-control" />
-                </div>
-              
-            </form>
-
-        </div>
-        <div class="card-footer">
-            <button [disabled]="!candidateAddForm.valid" class="btn btn-success" (click)="add()">
-                Ekle
-            </button>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="text-center">
+  <div class="row align-items-end">
+    <div class="col-md-3 offset-md-4">
     <main class="form-signin">
         <form [formGroup]="candidateSignForm">
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -89,3 +42,5 @@
         </form>
       </main>
     </div>
+  </div>
+</div>
