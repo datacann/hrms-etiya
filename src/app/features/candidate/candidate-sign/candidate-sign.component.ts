@@ -34,7 +34,7 @@ export class CandidateSignComponent implements OnInit {
       email: ["", Validators.required],
       password: ["", Validators.required],
       verifyPassword:["",Validators.required],
-      nationalityId: ["", Validators.required],
+      nationalityId: ["", [Validators.required,Validators.maxLength(11),Validators.minLength(11)]],
       birthYear: ["", Validators.required],
     })
   }

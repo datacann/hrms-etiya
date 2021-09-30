@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -9,69 +10,41 @@ import { MenuItem } from 'primeng/api';
 export class SideMenuComponent implements OnInit {
 
 
+ 
   items: MenuItem[];
   user: any;
+  userId:any
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
-    this.createMenu();
+    this.checkuser()
   }
 
-  createMenu() {
-    // this.user = JSON.parse(localStorage.getItem('user'));
-    // if (this.user.message === "employer Logged in")
-    this.items = [
-      {
-        label: 'İş İlanları',
-        items: [
-          {
-            label: 'Tüm İlanlar',
-            icon: 'bi bi-clipboard-data',
-            routerLink: '/'
-          },
-          {
-            label: 'Aktif İlanlar',
-            icon: 'bi bi-lightbulb-fill',
-            routerLink: '/job-advertisement-list'         
-          },
-          {
-            label: 'Pasif İlanlar',
-            icon: 'bi bi-lightbulb'
-          }
-        ]
-      },
-      {
-        label: 'İş Arayan',
-        items: [
-          {
-            label: 'Aday Listesi',
-            icon: 'bi bi-list-ul',
-            routerLink: "/candidate-list"
-          }
-        ]
-      },
-      {
-        label: 'İşveren',
-        items: [
-          {
-            label: 'Firma Listesi',
-            icon: 'bi bi-list-ul',
-            routerLink: "/employer-list"
-          }
-        ]
-      },
-      {
-        label: 'Pozisyonlar',
-        items: [
-          {
-            label: 'Pozisyon Listesi',
-            icon: 'bi bi-list-ul',
-            routerLink: "/position-list"
-          }
-        ]
+  checkuser(){
+    if (localStorage.getItem("user")){
+    this.user = JSON.parse(localStorage.getItem("user"))
+        console.log(this.user)
+        let message = this.user.message
+        if (message.includes("employer")) {
+           this.userId="employer"
+        }
+
+        if(message.includes("candidate")){
+          this.userId= "candidate"
+        }
+
+        if(message.includes("systemEmployee")){
+          this.userId= "systemEmployee"
+        }
+        
       }
-    ]
-  }
+      else{
+        this.router.navigate(["login"])
+        
+      }
+    
+        
+      }
 
 }

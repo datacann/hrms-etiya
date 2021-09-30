@@ -9,20 +9,32 @@ import { User } from 'src/app/models/user/user';
 export class NaviUserInfoComponent implements OnInit {
 
   constructor() { }
-
-  user:User
+  userId:string
+  userInfo:any
+  user:any
+  messsage:any
 
   ngOnInit(): void {
     console.log(this.getUserInfo())
   }
 
-  getUserInfo():User{
+  getUserInfo(){
+    if (localStorage.getItem("user")) {
+
     this.user = JSON.parse(localStorage.getItem("user"))
-    return this.user
-  }
+      this.userInfo=this.user.data
+      this.messsage=this.user.message
+      if(this.messsage.includes("employer")){
+        this.userId="employer"
+      }
+      else if (this.messsage.includes("candidate")) {
+        this.userId="candidate"
+      } else {
 
-  signOut(){
-    localStorage.clear()
-  }
+        this.userId="systemEmployee"
 
+      }
+
+  }
+  }
 }

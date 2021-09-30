@@ -1,22 +1,31 @@
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>        
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Birth Year</th>
-                <th scope="col">Nationality ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let candidate of candidates" >  
-                <td>{{candidate.firstName}}</td>
-                <td>{{candidate.lastName}}</td>
-                <td>{{candidate.email}}</td>
-                <td>{{candidate.birthYear}}</td>
-                <td>{{candidate.nationalityId}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-md-3">
+        <app-side-menu></app-side-menu>
+
+    </div>
+    <div class="col-md-9">
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Birth Year</th>
+                        <th scope="col">Nationality ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let candidate of candidates">
+                        <td>{{candidate.firstName}}</td>
+                        <td>{{candidate.lastName}}</td>
+                        <td>{{candidate.email}}</td>
+                        <td>{{candidate.birthYear}}</td>
+                        <td>{{candidate.nationalityId}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

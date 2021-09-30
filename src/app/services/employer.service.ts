@@ -24,6 +24,10 @@ export class EmployerService {
     return JSON.parse(localStorage.getItem('user')).data.id
   }
 
+  getEmployerById(id:number):Observable<Employer>{
+    return this.httpClient.get<Employer>(this.apiUrl+"/get/byId?emplId="+id)
+  }
+
   updateCompanyName(employer:Employer){
     return this.httpClient.put(this.apiUrl+"update/companyName?companyName="+employer.companyName+"&emplId="+employer.id,employer)
   }

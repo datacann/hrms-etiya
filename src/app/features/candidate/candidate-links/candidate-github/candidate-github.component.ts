@@ -33,6 +33,7 @@ export class CandidateGithubComponent implements OnInit {
   add(){
     if(this.githubForm.valid){
       this.candidateService.addGithub(this.githubForm.value,this.getCandidateId()).subscribe((data:any)=>{
+        this.pageReloadDelay()
         this.toastrService.success("Github hesabı eklendi")
       },
       (responseError) => {
@@ -56,4 +57,7 @@ export class CandidateGithubComponent implements OnInit {
     return this.candidateId.data.id
   }
 
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
 }

@@ -1,21 +1,29 @@
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Company Name</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Email</th>
-                <th scope="col">Website</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let employer of employers">
+<div class="row">
+    <div class="col-md-3">
+        <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-md-9">
 
-                <td>{{employer.companyName}}</td>
-                <td>{{employer.phoneNumber}}</td>
-                <td>{{employer.email}}</td>
-                <td>{{employer.website}}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Website</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employer of employers">
+
+                        <td>{{employer.companyName}}</td>
+                        <td>{{employer.phoneNumber}}</td>
+                        <td>{{employer.email}}</td>
+                        <td>{{employer.website}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

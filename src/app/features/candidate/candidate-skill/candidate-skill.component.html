@@ -55,8 +55,13 @@
       <ng-template pTemplate="header">
         <tr>
           <th>
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="text-center">
               Skills
+            </div>
+          </th>
+          <th>
+            <div class="text-center">
+              Remove
             </div>
           </th>
 
@@ -66,14 +71,18 @@
         <tr class="p-selectable-row">
           <td>
             <span class="p-column-title">Skill</span>
-            {{ skill.skill.name }}
+            <div class="text-center">
+              {{ skill.skill.name }}
+            </div>
+            
           </td>
-
-
           <td>
-            <button (click)="deleteSkill(skill.id)" >asdfdgf</button>
+            <div class="text-center">
+              <button class="p-button-sm p-button-rounded p-button-danger mt-2 text-center"  pButton type="button"
+              icon="pi pi-times"></button>
+            </div>
+            
           </td>
-          
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Candidate } from 'src/app/models/candidate/candidate';
 import { JobAdvertisement } from 'src/app/models/job-advertisement/jobAdvertisement';
 import { CandidateService } from 'src/app/services/candidate.service';
 import { JobAdvertisementService } from 'src/app/services/job-advertisement.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-active-job-advert-list',
@@ -12,40 +12,80 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
 })
 export class ActiveJobAdvertListComponent implements OnInit {
 
-  activeJobAdverts:JobAdvertisement[]=[] 
-  loggedCandidate: Candidate;
-  
-  constructor(private jobAdvetisementService:JobAdvertisementService,
-    private candidateService:CandidateService,
-    private toastrService: ToastrService) { }
+  loggedCandidate: any
+  activeJobAdverts: JobAdvertisement[] = []
+  candidate: any
+  id:number
+  message:any
+  favs: JobAdvertisement[] = []
+  loading: boolean = true
+  constructor
+  (private jobAdvetisementService: JobAdvertisementService,
+    private userService: UserService,
+    private candidateService: CandidateService,
+    private favAdverts: CandidateService,
+    private toastrService: ToastrService,
+    private favoriteService: CandidateService
+  ) { }
 
   ngOnInit(): void {
     this.getJobAdvertActive()
+    console.log(this.favs)
+    this.id=this.userService.getEmployer().id
+    this.getCandidateById()
   }
 
-  getJobAdvertActive(){
-    this.jobAdvetisementService.getJobsByActive().subscribe((data:any)=>{
+  getJobAdvertActive() {
+    this.jobAdvetisementService.getJobsByActive().subscribe((data: any) => {
       this.activeJobAdverts = data.data
       console.log(this.activeJobAdverts)
+      this.loading = false
     })
   }
 
-  changeActivite(jobAdvertisement:JobAdvertisement){
-    this.jobAdvetisementService.closeJobAdvertisement(jobAdvertisement).subscribe((response:any)=>{
+  changeActivite(jobAdvertisement: JobAdvertisement) {
+    this.jobAdvetisementService.closeJobAdvertisement(jobAdvertisement).subscribe((response: any) => {
     })
   }
 
-  addToFavorites(id:number) {
-    this.candidateService.addFavoriteJob(this.loggedCandidate,id).subscribe((response:any)=>{
-      this.toastrService.success("Added to favorite successfully.")
-      this.pageReloadDelay()
-    },((responseError)=>{
-      this.toastrService.error("This job advertisement exists in your favorites.")
-    }))
+  getCandidataId(): any {
+    this.candidate = JSON.parse(localStorage.getItem("user"))
+    this.message=this.candidate.message
+    return this.candidate.data.id
   }
 
-  pageReloadDelay() {
-    setTimeout(location.reload.bind(location), 500);
+
+  addToFavs(jobAdvertisement: JobAdvertisement) {
+    this.favAdverts.addFavoritesJob(jobAdvertisement, this.getCandidataId()).subscribe(data => {
+      this.toastrService.success("Eklendi")
+    setTimeout(()=>  window.location.reload(),1000)
+    })
+    console.log(jobAdvertisement.id)
+  }
+  getCandidateById() {
+    this.candidateService.getCandidateById(this.id).subscribe((response: any) => {
+      this.loggedCandidate = response.data;
+      this.favs=response.data.favoriteJobAdvertisements
+
+      this.loading = false;
+    })
   }
 
+  removeFavs(jobId: number) {
+    this.favoriteService.removeFavoriteJob(this.loggedCandidate, jobId).subscribe(data => {
+      this.toastrService.warning("Removed")
+      setTimeout(()=>  window.location.reload(),1000)
+    })
+  }
+
+  checkFavJob(id:number){
+    let favJobValue= this.favs.find((f)=>f.id===id)
+    if(favJobValue){
+      return true
+    }
+
+    else{
+      return false
+    }
+  }
 }

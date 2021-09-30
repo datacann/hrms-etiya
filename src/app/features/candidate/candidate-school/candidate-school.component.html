@@ -1,45 +1,44 @@
 <div class="card mb-3">
-    <img src="https://cdn.discordapp.com/attachments/876229287307542581/891656017920819220/cambridge.jpg" 
-      class="card-img-top" alt="...">
-    <div class="card-body text-center">
-      <h5 class="card-title">Okul Bilgileri</h5>
-      <p class="card-text">Okul Bilgilerinizi Girerek CV'nizi güçlendirin</p>
-      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal2">
-        Okul Bilgisi Ekle
-      </button>
-    </div>
+  <img src="https://cdn.discordapp.com/attachments/876229287307542581/891656017920819220/cambridge.jpg"
+    class="card-img-top" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">Okul Bilgileri</h5>
+    <p class="card-text">Okul Bilgilerinizi Girerek CV'nizi güçlendirin</p>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal2">
+      Okul Bilgisi Ekle
+    </button>
+  </div>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <form [formGroup]="candidateSchoolForm">
             <div class="mb-3">
-                <label>School</label>
-                <select  class="form-select" formControlName="schoolId" >
-                    <option value="" disabled>cities </option>
-                    <option *ngFor="let school of schools" [ngValue]="school.id" >{{school.name}}</option>  
-                </select>
+              <label>School</label>
+              <select class="form-select" formControlName="schoolId">
+                <option value="" disabled>Cities </option>
+                <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+              </select>
             </div>
             <div class="mb-3">
-                <label>Graduation Year</label>
-                <input type="year" placeholder="graduationYear" formControlName="graduationYear" class="form-control"  />
+              <label>Start Year</label>
+              <input type="year" placeholder="start year" formControlName="startYear" class="form-control" />
             </div>
             <div class="mb-3">
-                <label>Department Name</label>
-                <select  class="form-select" formControlName="departmentId" >
-                    <option *ngFor="let department of departments" [ngValue]="department.id" >{{department.name}}</option>  
-                </select>
+              <label>Graduation Year</label>
+              <input type="year" placeholder="graduation year" formControlName="graduationYear" class="form-control" />
             </div>
             <div class="mb-3">
-                <label>Start Year</label>
-                <input type="year" placeholder="startYear" formControlName="startYear"
-                    class="form-control" />
+              <label>Department Name</label>
+              <select class="form-select" formControlName="departmentId">
+                <option *ngFor="let department of departments" [ngValue]="department.id">{{department.name}}</option>
+              </select>
             </div>
-        </form>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -52,21 +51,10 @@
   <div class="card my-4 border-bottom-0">
     <div class="card-header text-center fw-bold">Current Schools</div>
 
-    <p-table
-      *ngIf="loading == false; else loadingInfo"
-      id="myTable"
-      #dt
-      [value]="candidateSchools"
-      dataKey="id"
-      styleClass="p-datatable-striped"
-      [rowHover]="true"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="0"
-    >
+    <p-table *ngIf="loading == false; else loadingInfo" id="myTable" #dt [value]="candidateSchools" dataKey="id"
+      styleClass="p-datatable-striped" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0">
       <ng-template pTemplate="header">
         <tr>
           <th>
@@ -94,7 +82,7 @@
           </th>
           <th>
             <div class="d-flex justify-content-between align-items-center">
-              Update
+              Remove
             </div>
           </th>
         </tr>
@@ -105,7 +93,6 @@
             <span class="p-column-title">School</span>
             {{ school.school.name }}
           </td>
-
           <td>
             <span class="p-column-title">Department</span>
             {{ school.department.name }}
@@ -119,12 +106,15 @@
           <td>
             <span class="p-column-title">Graduation Year</span>
             <span *ngIf="school.graduationYear">
-              {{ school.graduationYear }}</span
-            >
+              {{ school.graduationYear }}</span>
             <span *ngIf="!school.graduationYear">Present</span>
           </td>
-          <td>
+          <!-- <td>
             <button (click)="deleteSchool(school.id)" >asdfdgf</button>
+          </td> -->
+          <td>
+            <button class="p-button-sm p-button-rounded p-button-danger mt-2" pButton type="button"
+              icon="pi pi-times"></button>
           </td>
         </tr>
       </ng-template>
@@ -137,16 +127,10 @@
   </div>
 </div>
 <ng-template #loadingInfo>
-  <div
-    class="
+  <div class="
       text-center
       d-flex
       flex-column
       align-items-center
       justify-content-center
-    "
-    style="height: 200px"
-  >
-
-
-  
+    " style="height: 200px">

@@ -29,7 +29,6 @@ import { CandidateImageComponent } from './features/candidate/candidate-image/ca
 import { CandidateGithubComponent } from './features/candidate/candidate-links/candidate-github/candidate-github.component';
 import { CandidateLinkedinComponent } from './features/candidate/candidate-links/candidate-linkedin/candidate-linkedin.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';
 import { SideMenuComponent } from './features/side-menu/side-menu.component';
 import { VerificateJobAdvertComponent } from './features/job-advertisement/verificate-job-advert/verificate-job-advert.component';
@@ -45,6 +44,18 @@ import { UpdatePhoneNumberComponent } from './features/employers/employer-update
 import { UpdateEmailPasswordComponent } from './features/employers/employer-update/update-email-password/update-email-password.component';
 import { JobAdvertVerifyComponent } from './features/employee/job-advert-verify/job-advert-verify.component';
 import { JobAdvertAddFavouriteComponent } from './features/job-advertisement/job-advert-add-favourite/job-advert-add-favourite.component';
+import {AccordionModule} from 'primeng/accordion';
+import { CandidateSideMenuComponent } from './features/candidate-side-menu/candidate-side-menu.component';
+import { EmployerSideMenuComponent } from './features/employer-side-menu/employer-side-menu.component';
+import { EmployeeSideMenuComponent } from './features/employee-side-menu/employee-side-menu.component';
+import { EmployeeProfileComponent } from './features/employee/employee-profile/employee-profile.component';
+import { DividerModule } from "primeng/divider";
+import { UpdateComponent } from './features/employee/update/update.component';
+import { UpdateEmployeeLastNameComponent } from './features/employee/update-employee-last-name/update-employee-last-name.component';
+import { ApplyChangesComponent } from './features/employee/apply-changes/apply-changes.component';
+import { UpdateCvTitleComponent } from './features/cv/update-cv-title/update-cv-title.component';
+import { UpdateCvLetterComponent } from './features/cv/update-cv-letter/update-cv-letter.component';
+import { FooterComponent } from './features/footer/footer.component';
 
 
 @NgModule({
@@ -83,7 +94,17 @@ import { JobAdvertAddFavouriteComponent } from './features/job-advertisement/job
     UpdatePhoneNumberComponent,
     UpdateEmailPasswordComponent,
     JobAdvertVerifyComponent,
-    JobAdvertAddFavouriteComponent
+    JobAdvertAddFavouriteComponent,
+    CandidateSideMenuComponent,
+    EmployerSideMenuComponent,
+    EmployeeSideMenuComponent,
+    EmployeeProfileComponent,
+    UpdateComponent,
+    UpdateEmployeeLastNameComponent,
+    ApplyChangesComponent,
+    UpdateCvTitleComponent,
+    UpdateCvLetterComponent,
+    FooterComponent
     
     
   ],
@@ -97,6 +118,7 @@ import { JobAdvertAddFavouriteComponent } from './features/job-advertisement/job
     AccordionModule,
     TableModule,
     ButtonModule,
+    DividerModule,
     ToastrModule.forRoot({positionClass:"toast-bottom-right"}),
 
   ],

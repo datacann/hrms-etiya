@@ -27,6 +27,11 @@ export class UserService {
   userExistsByLogin(user:User):Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl + "/exists/byEmailAndPW?email="+user.email+ "&password="+user.password )
   }
+
+  getEmployer():any{
+    return JSON.parse(localStorage.getItem('user')).data
+
+  }
 }
 
 

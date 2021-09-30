@@ -29,42 +29,34 @@ export class CandidateService {
   }
 
   addGithub(gitHub:GitHub,id:number):Observable<GitHub>{
-    return this.httpClient.post<GitHub>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub.githubAccount,gitHub)
+    return this.httpClient.put<GitHub>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub.githubAccount,gitHub)
   }
 
   addLinked(linked:LinkedIn,id:number):Observable<LinkedIn>{
-    return this.httpClient.post<LinkedIn>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linked.linkedInAccount,linked)
+    return this.httpClient.put<LinkedIn>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linked.linkedInAccount,linked)
   }
 
   getCandidateById(id: number): Observable<CandidateListResponse> {
     return this.httpClient.get<CandidateListResponse>(this.apiUrl + '/get/byId?candId=' + id);
   }
 
-  addFavoriteJob(
-    candidate: Candidate,
-    jobAdvId: number
-  ): Observable<JobAdvertisement> {
-    return this.httpClient.put<JobAdvertisement>(
-      this.apiUrl +
-        '/update/favoriteJobAdvs/add?candId=' +
-        candidate.id +
-        '&jobAdvId=' +
-        jobAdvId,
-      candidate
-    );
+  // addFavoriteJob(candidate: Candidate,jobAdvId: number): Observable<JobAdvertisement> {
+  //   return this.httpClient.put<JobAdvertisement>
+  //   ( this.apiUrl +'/update/favoriteJobAdvs/add?candId=' +candidate.id +'&jobAdvId=' +jobAdvId,candidate
+  //   );
+  // }
+
+  // removeFavoriteJob(candidate: Candidate,jobAdvId: number): Observable<JobAdvertisement> {
+  //   return this.httpClient.put<JobAdvertisement>
+  //   (this.apiUrl +'/update/favoriteJobAdvs/remove?candId=' +candidate.id +'&jobAdvId=' +jobAdvId,candidate
+  //   );
+  // }
+
+  addFavoritesJob(jobAdvertisement: JobAdvertisement, id: number) {
+    return this.httpClient.put(this.apiUrl + "/update/favoriteJobAdvs/add?candId=" + id + "&jobAdvId=" + jobAdvertisement.id, jobAdvertisement)
   }
 
-  removeFavoriteJob(
-    candidate: Candidate,
-    jobAdvId: number
-  ): Observable<JobAdvertisement> {
-    return this.httpClient.put<JobAdvertisement>(
-      this.apiUrl +
-        '/update/favoriteJobAdvs/remove?candId=' +
-        candidate.id +
-        '&jobAdvId=' +
-        jobAdvId,
-      candidate
-    );
+  removeFavoriteJob(candidate: Candidate, jobId: number): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/favoriteJobAdvs/remove?candId=" + candidate.id + "&jobAdvId=" + jobId, candidate);
   }
 }

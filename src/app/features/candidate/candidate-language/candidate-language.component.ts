@@ -21,7 +21,7 @@ export class CandidateLanguageComponent implements OnInit {
   candidateLanguageForm: FormGroup
   candidateLanguages: Language[] = [];
   loggedUser: any;
-  labguageLevels=LanguageLevels
+  languageLevels=LanguageLevels
 
 
   constructor(private languageService: LanguageService,
@@ -35,6 +35,7 @@ export class CandidateLanguageComponent implements OnInit {
     this.getCandidateId()
     this.createLanguageForm()
     this.getCandidateLanguages();
+    console.log(this.candidateLanguages)
 
   }
 
@@ -50,6 +51,7 @@ export class CandidateLanguageComponent implements OnInit {
     if (this.candidateLanguageForm.valid) {
       this.candidateLanguageService.add(this.candidateLanguageForm.value).subscribe(
         (response: any) => {
+          // this.pageReloadDelay()
           this.toastrService.success('Başarılı');
         },
         (responseError) => {
@@ -94,11 +96,11 @@ export class CandidateLanguageComponent implements OnInit {
   deleteLanguage(langId: number) {
     this.candidateLanguageService.deleteById(langId).subscribe((response: any) => {
         this.toastrService.warning('Delete successful');
-        this.pageReloadDelay();
+        // this.pageReloadDelay();
       });
   }
 
- pageReloadDelay() {
-    setTimeout(location.reload.bind(location), 1000);
-  }
+//  pageReloadDelay() {
+//     setTimeout(location.reload.bind(location), 1000);
+//   }
 }

@@ -40,7 +40,7 @@ export class CandidateExperienceComponent implements OnInit {
     this.candidateExperienceForm = this.formBuilder.group({
       candidateId: [this.getCandidateId()],
       positionId: ["", Validators.required],
-      quitYear: ["", Validators.required],
+      quitYear: ["", [Validators.required,Validators.maxLength(2021)]],
       startYear: ["", Validators.required],
       workPlace:["",Validators.required],
     })
@@ -50,6 +50,7 @@ export class CandidateExperienceComponent implements OnInit {
     if(this.candidateExperienceForm.valid){
       this.candidateExperienceService.add(this.candidateExperienceForm.value).subscribe((response:any)=>{
         console.log(this.candidateExperienceForm.value);
+        this.pageReloadDelay();
         this.toastrService.success(response.message ,"iş bilgileri eklendi")
         this.candidateExperienceForm.reset()
       },

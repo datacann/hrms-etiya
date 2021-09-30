@@ -1,3 +1,5 @@
+<div class="container">
+
 <div class="text-center">
   <div class="row align-items-end">
     <div class="col-md-3 offset-md-4">
@@ -29,7 +31,7 @@
             <label for="floatingPassword">Password</label>
           </div>
           <div class="form-floating">
-            <input formControlName="verifyPassword"  [(ngModel)]="verifyPassword" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input formControlName="verifyPassword"  [(ngModel)]="verifyPassword" type="password" class="form-control" id="floatingPassword" placeholder="Password Again">
             <label for="floatingPassword">Password Again</label>
           </div>
           <div class="checkbox mb-3">
@@ -37,10 +39,11 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button (click)="addCandidate()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <button (click)="addCandidate()" class="w-100 btn btn-lg btn-primary" routerLink="/login" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
         </form>
       </main>
     </div>
   </div>
+</div>
 </div>

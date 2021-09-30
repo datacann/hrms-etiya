@@ -44,17 +44,17 @@ export class CvDetailComponent implements OnInit {
     this.getCandidateByQuitYear();
     this.getCandidateByGradYear();
     // this.getCandidateImageById();
+    console.log(this.loggedCandidate)
+    // console.log(this.getUserId())
     
   }
 
   getCandidateById() {
-    this.candidateService
-      .getCandidateById(this.getUserId())
+    this.candidateService.getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         this.loggedCandidate = response.data;
         this.candidateLanguages = response.data.candidateLanguages;
         this.candidateSkills = response.data.candidateSkills;
-        console.log(this.loggedCandidate);
       });
   }
 
@@ -79,8 +79,7 @@ export class CvDetailComponent implements OnInit {
 
   getCandidateByGradYear() {
     this.candidateSchoolService.getCandidatesByGradYear(-1).subscribe((response: any) => {
-        response.data = response.data.filter((r) => r.candidate.id === this.getUserId()
-          );
+        response.data = response.data.filter((r) => r.candidate.id === this.getUserId());
           this.candidateSchools = response.data;
       });
   }

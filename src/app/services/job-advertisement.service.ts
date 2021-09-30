@@ -48,4 +48,9 @@ export class JobAdvertisementService {
     (this.apiUrl +'/update/verification?jobAdvId=' +jobAdvertisement.id +'&status=' +!jobAdvertisement.verified,jobAdvertisement
     );
   }
+
+  
+  updateJobAdvertisementVerification(jobAdvertisement: JobAdvertisement, id: number): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/verification?jobAdvId=" + id + "&status=" + !jobAdvertisement.verified, jobAdvertisement);
+  }
 }

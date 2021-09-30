@@ -44,6 +44,7 @@ export class CandidateSkillComponent implements OnInit {
       this.candidateSkillService.add(this.candidateSkillForm.value).subscribe((response:any)=>{
         this.toastrService.success(response.message ,"yetenek bilgileri eklendi")
         this.candidateSkillForm.reset()
+        this.pageReloadDelay()
       },
       (responseError) => {
         this.toastrService.error(

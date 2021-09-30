@@ -4,9 +4,11 @@ import { CandidateImageComponent } from './features/candidate/candidate-image/ca
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 import { CandidateSchoolComponent } from './features/candidate/candidate-school/candidate-school.component';
 import { CandidateSignComponent } from './features/candidate/candidate-sign/candidate-sign.component';
-import { CandidateSchoolUpdateComponent } from './features/candidate/candidate-update/candidate-school-update/candidate-school-update.component';
 import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
+import { ApplyChangesComponent } from './features/employee/apply-changes/apply-changes.component';
+import { EmployeeProfileComponent } from './features/employee/employee-profile/employee-profile.component';
+import { UpdateComponent } from './features/employee/update/update.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
 import { UpdateCompanyNameComponent } from './features/employers/employer-update/update-company-name/update-company-name.component';
@@ -50,7 +52,9 @@ const routes: Routes = [
   {path:"imageUpload",component:CandidateImageComponent},
   {path:"cvDetail",component:CvDetailComponent},
   {path:"verification",component:VerificateJobAdvertComponent},
-  {path:"updateDepartment",component:CandidateSchoolUpdateComponent},
+  {path:"profile",component:EmployeeProfileComponent},
+  {path:"approval",component:ApplyChangesComponent},
+  
   
   
 ];

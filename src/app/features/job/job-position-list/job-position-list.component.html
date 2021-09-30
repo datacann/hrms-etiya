@@ -1,17 +1,24 @@
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Position Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let position of jobPositions">
+<div class="row">
+    <div class="col-md-3">
+        <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-md-9">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Position Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let position of jobPositions">
 
-                <td>{{position.id}}</td>
-                <td>{{position.title}}</td>
-            </tr>
-        </tbody>
-    </table>
+                        <td>{{position.id}}</td>
+                        <td>{{position.title}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

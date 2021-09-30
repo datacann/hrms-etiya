@@ -17,15 +17,15 @@
             <div class="mb-3">
                 <label>Dil</label>
                 <select  class="form-select" formControlName="languageId" >
-                  <option value="" disabled>Diller </option>
+                  <option value="" disabled>Languages </option>
                    <option *ngFor="let language of languages" [ngValue]="language.id" >{{language.name}}</option>  
                 </select>
             </div>
             <div class="mb-3">
               <label>Dil</label>
               <select  class="form-select" formControlName="languageLevel" >
-                <option value="" disabled>languageLevel </option>
-                 <option *ngFor="let language of labguageLevels"  >{{language.level}}</option>  
+                <option value="" disabled>language Level </option>
+                 <option *ngFor="let language of languageLevels"  >{{language.level}}</option>  
               </select>
           </div>
            
@@ -61,32 +61,48 @@
       <ng-template pTemplate="header">
         <tr>
           <th>
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="text-center">
               Language
             </div>
           </th>
           <th>
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="text-center">
               level
             </div>
           </th>
+          <th>
+            <div class="text-center">
+              Remove
+            </div>
+          </th>
+
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-language>
         <tr class="p-selectable-row">
           <td>
             <span class="p-column-title">Language</span>
-             {{language.language.name}}
+            <div class="text-center">
+              {{language.language.name}}
+            </div>
+            
           </td>
 
           <td>
+            
             <span class="p-column-title">level</span>
-            {{ language.languagelevel }}
+            <div class="text-center">
+            {{language.languageLevel }}
+          </div>
           </td>
+         
           <td>
-            <button (click)="deleteLanguage(language.id)" >asdfdgf</button>
+            <div class="text-center">
+            <button class="p-button-sm p-button-rounded p-button-danger mt-2" (click)="deleteLanguage(language.id)" pButton type="button"
+              icon="pi pi-times"></button>
+            </div>
           </td>
-          
+        
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

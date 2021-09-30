@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+
+  </div>
+  <div class="col-md-9">
+    <div class="container">
+      <div style="margin-top: 100px;">
+        <p-accordion [multiple]="true">
+          <div class="text-center text-uppercase">
+            <h3> Profil Bilgileri</h3>
+          </div>
+
+          <p-accordionTab header="Kişisel Bilgiler">
+
+            <!-- <p class="card-text">
+                Firstname:
+                 <span class="fw-bold"> {{user().firstName}} <app-hrms-update></app-hrms-update></span>
+               </p>
+    
+               <p class="card-text">
+               lastName:
+                 <span class="fw-bold"> {{user().lastName}} <app-hrms-lastname-update></app-hrms-lastname-update>
+                  </span>
+               </p>
+               <p class="card-text">
+                 Email: <span class="fw-bold">{{user().email}}</span>
+               </p> -->
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+</div>

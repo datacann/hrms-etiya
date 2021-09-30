@@ -53,6 +53,7 @@ export class CandidateSchoolComponent implements OnInit {
     if(this.candidateSchoolForm.valid){
       this.candidateSchoolService.add(this.candidateSchoolForm.value).subscribe((response:any)=>{
         console.log(this.candidateSchoolForm.value);
+        this.pageReloadDelay()
         this.toastrService.success(response.message ,"okul bilgileri eklendi")
         this.candidateSchoolForm.reset()
       },

@@ -1,16 +1,17 @@
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        hoşgeldin {{getUserInfo().firstName}} {{getUserInfo().lastName}}
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+<div class="d-flex">
+    <div *ngIf="userId=='employer'">
+     <p style="color: wheat; padding-right: 100px; text-transform: capitalize;padding-top: 5px; font-size: larger;margin-top: 10px;">Welcome {{userInfo.companyName}} </p>
+     <div style="padding-left: 100px;">
+       <button  pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-secondary"></button>
+     </div>
 
-        <!-- <li>
-            <a (click)="changeTheme()">Temayı değiştir</a>
-        </li> -->
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-        <li><a (click)="signOut()" >Çıkış Yap </a></li>
-    </ul>
-</li>
+    </div>
+
+    <div *ngIf="userId=='candidate'" >
+     <p style="color: wheat;">Welcome {{userInfo.firstName}} {{userInfo.lastName}} </p>
+    </div>
+
+    <div *ngIf="userId=='systemEmployee'" >
+     <p style="color: wheat;">Welcome {{userInfo.firstName}} {{userInfo.lastName}}</p>
+    </div>
+   </div>
