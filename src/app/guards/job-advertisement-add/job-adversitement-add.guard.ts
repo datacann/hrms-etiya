@@ -19,10 +19,8 @@ export class JobAdversitementAddGuard implements CanActivate {
       let user = JSON.parse(localStorage.getItem("user"))
       console.log(user)
       let employer = user.message
-      if (employer.includes("candidate")) {
-
+      if (employer.includes("employer")) {
         return true
-
       }
       else {
         this.toastrService.error("Geçersiz Yetki")
@@ -31,9 +29,8 @@ export class JobAdversitementAddGuard implements CanActivate {
       }
 
     }
-
     else {
-      this.toastrService.warning("Giriş Yapmalısınız")
+      this.toastrService.warning("You must login")
       this.router.navigate(["login"])
       return false
     }

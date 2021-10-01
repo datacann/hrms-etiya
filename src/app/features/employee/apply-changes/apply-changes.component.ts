@@ -32,7 +32,7 @@ export class ApplyChangesComponent implements OnInit {
 
   updateJobAdvertisementVerification(jobAdvertisement: JobAdvertisement){
     this.jobAdvertisementService.updateJobAdvertisementVerification(jobAdvertisement, this.editId).subscribe((response: any)=>{
-      this.toastrService.success("İş ilanı onaylandı.");
+      this.toastrService.success("Approved Job Posting");
       setTimeout(() => window.location.reload(), 1300);
     })
   }

@@ -30,8 +30,10 @@ export class JobAdvertisementService {
     return this.httpClient.get(this.apiUrl + "/get/activeVerifiedByCreatedAt")
   }
 
-  getActiveJobByEmployer(){
-    return this.httpClient.get(this.apiUrl + "/get/byEmployer")
+  getJobAdvertisementsByEmployer(employerId: number): Observable<JobAdvertisementListResponse>{
+
+    return this.httpClient.get<JobAdvertisementListResponse>(this.apiUrl + '/get/byEmployer?employerId=' + employerId);
+
   }
 
   closeJobAdvertisement(jobAdvertisement:JobAdvertisement):Observable<JobAdvertisement>{
@@ -48,9 +50,13 @@ export class JobAdvertisementService {
     (this.apiUrl +'/update/verification?jobAdvId=' +jobAdvertisement.id +'&status=' +!jobAdvertisement.verified,jobAdvertisement
     );
   }
-
-  
   updateJobAdvertisementVerification(jobAdvertisement: JobAdvertisement, id: number): Observable<JobAdvertisement> {
     return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/verification?jobAdvId=" + id + "&status=" + !jobAdvertisement.verified, jobAdvertisement);
+  }
+
+  updateJobAdvertisementActivation(jobAdvertisement: JobAdvertisement, id: number): Observable<JobAdvertisement> {
+
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "/update/activation?jobAdvId=" + id + "&status=" + !jobAdvertisement.active, jobAdvertisement)
+
   }
 }

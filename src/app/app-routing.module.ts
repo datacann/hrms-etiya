@@ -8,6 +8,7 @@ import { CvAddComponent } from './features/cv/cv-add/cv-add.component';
 import { CvDetailComponent } from './features/cv/cv-detail/cv-detail.component';
 import { ApplyChangesComponent } from './features/employee/apply-changes/apply-changes.component';
 import { EmployeeProfileComponent } from './features/employee/employee-profile/employee-profile.component';
+import { ProfileComponent } from './features/employee/profile/profile.component';
 import { UpdateComponent } from './features/employee/update/update.component';
 import { EmployerListComponent } from './features/employers/employer-list/employer-list.component';
 import { EmployerSignComponent } from './features/employers/employer-sign/employer-sign.component';
@@ -19,6 +20,7 @@ import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
 import { ActiveJobAdvertListComponent } from './features/job-advertisement/active-job-advert-list/active-job-advert-list.component';
 import { CloseJobAdvertisementComponent } from './features/job-advertisement/close-job-advertisement/close-job-advertisement.component';
+import { JobAdvertAddFavouriteComponent } from './features/job-advertisement/job-advert-add-favourite/job-advert-add-favourite.component';
 import { JobAdvertisementAddComponent } from './features/job-advertisement/job-advertisement-add/job-advertisement-add.component';
 import { VerificateJobAdvertComponent } from './features/job-advertisement/verificate-job-advert/verificate-job-advert.component';
 import { JobPositionAddComponent } from './features/job/job-position-add/job-position-add.component';
@@ -26,6 +28,9 @@ import { JobPositionListComponent } from './features/job/job-position-list/job-p
 import { LoginComponent } from './features/login/login/login.component';
 import { CandidateListGuard } from './guards/candidate-list/candidate-list.guard';
 import { ChangeActivityJobAdvertGuard } from './guards/change-activity-job-advert/change-activity-job-advert.guard';
+import { CvAddGuard } from './guards/cv/cv-add.guard';
+import { CvDetailGuardGuard } from './guards/cv/cv-detail-guard.guard';
+import { EmployeeGuard } from './guards/employee.guard';
 import { JobAdversitementAddGuard } from './guards/job-advertisement-add/job-adversitement-add.guard';
 import { JobPositionAddGuard } from './guards/job-position-add/job-position-add.guard';
 
@@ -46,16 +51,15 @@ const routes: Routes = [
   {path:"activeJobAdvertList",component:ActiveJobAdvertListComponent},
   {path:"activeJobAdvertListByDate",component:ActiveJobAdvertByDateComponent},
   {path:"activeJobAdvertListByEmployer",component:ActivJobAdvertByEmployerComponent},
-  {path:"changeActivite",component:CloseJobAdvertisementComponent},
+  {path:"changeActivite",component:CloseJobAdvertisementComponent,canActivate:[ChangeActivityJobAdvertGuard]},
   {path:"candidateSchool",component:CandidateSchoolComponent},
-  {path:"cv",component:CvAddComponent},
+  {path:"cv",component:CvAddComponent,canActivate:[CvAddGuard]},
   {path:"imageUpload",component:CandidateImageComponent},
-  {path:"cvDetail",component:CvDetailComponent},
+  {path:"cvDetail",component:CvDetailComponent,canActivate:[CvDetailGuardGuard]},
   {path:"verification",component:VerificateJobAdvertComponent},
   {path:"profile",component:EmployeeProfileComponent},
-  {path:"approval",component:ApplyChangesComponent},
-  
-  
+  {path:"approval",component:ApplyChangesComponent,canActivate:[EmployeeGuard]},
+  {path:"favorites",component:JobAdvertAddFavouriteComponent},
   
 ];
 

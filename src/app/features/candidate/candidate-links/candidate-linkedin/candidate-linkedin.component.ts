@@ -40,14 +40,14 @@ export class CandidateLinkedinComponent implements OnInit {
     if(this.linkedForm.valid){
       this.candidateService.addLinked(this.linkedForm.value, this.getCandidateId()).subscribe((data:any)=>{
         this.pageReloadDelay()
-        this.toastrService.success("Linked hesabı eklendi")
+        this.toastrService.success("Added LinkedIn Account")
 
       },(dataError)=>{
         let message=JSON.stringify(dataError.error.data.error);
 
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Error'
         );
       }
       )

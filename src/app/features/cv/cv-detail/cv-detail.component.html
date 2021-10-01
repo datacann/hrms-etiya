@@ -1,18 +1,21 @@
+<div class="container">
+  
 <div class="row">
   <div class="col-md-3">
     <app-side-menu></app-side-menu>
-
   </div>
   <div class="col-md-9">
     <div class="container">
       <div style="margin-top: 100px;">
+        <div *ngIf="loading == false; else loadingInfo">
+
         <p-accordion [multiple]="true">
           <div class="text-center text-uppercase">
-            <h3>{{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }} CV BİLGİLERİ</h3>
+            <h3>{{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }} RESUME INFORMATION</h3>
           </div>
 
           <p-accordionTab header="Kişisel Bilgiler">
-            {{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }}
+            {{ loggedCandidate.firstName | uppercase }} {{ loggedCandidate.lastName | uppercase }}
             <p class="card-text">
               Cover Letter:
               <span class="fw-bold">{{ loggedCandidate.cvs[0].coverLetter }}</span>
@@ -71,4 +74,17 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
 </div>

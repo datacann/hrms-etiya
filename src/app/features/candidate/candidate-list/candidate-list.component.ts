@@ -16,16 +16,16 @@ export class CandidateListComponent implements OnInit {
     private toastrService:ToastrService,private candidateService:CandidateService) { }
 
     candidates:Candidate[]=[]
+    loading:boolean=true
 
   ngOnInit(): void {
-
     this.getCandidates()
-    
   }
 
   getCandidates(){
     this.candidateService.getCandidates().subscribe((data:any)=>{
       this.candidates=data.data
+      this.loading=false
     })
   }
 

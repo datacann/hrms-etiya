@@ -1,11 +1,11 @@
 <div class="card mb-3">
-    <img src="https://cdn.discordapp.com/attachments/876229287307542581/891668072237244437/1_nNxybrXr-YPikYvaXyDbkQ_1.jpeg" 
-      class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Dil Bilgileri</h5>
-      <p class="card-text">Dil Bilgilerinizi Girerek CV'nizi güçlendirin</p>
+    <!-- <img src="https://cdn.discordapp.com/attachments/876229287307542581/891668072237244437/1_nNxybrXr-YPikYvaXyDbkQ_1.jpeg" 
+      class="card-img-top" alt="..."> -->
+    <div class="card-body  text-center">
+      <h5 class="card-title">Language Information</h5>
+      <p class="card-text">Strengthen your Resume by Entering Your Language</p>
       <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal6">
-        Dil Bilgisi Ekle
+        Add Language
       </button>
     </div>
 <!-- Modal -->
@@ -98,8 +98,11 @@
          
           <td>
             <div class="text-center">
-            <button class="p-button-sm p-button-rounded p-button-danger mt-2" (click)="deleteLanguage(language.id)" pButton type="button"
-              icon="pi pi-times"></button>
+            <!-- <button class="p-button-sm p-button-rounded p-button-danger mt-2" (click)="deleteLanguage(language.id)" pButton type="button"
+              icon="pi pi-times"></button> -->
+              <button
+              (click)="deleteLanguage(language.id)" type="button" class="btn btn-outline-primary rounded-5"> <i
+                class="bi bi-trash"></i></button>
             </div>
           </td>
         

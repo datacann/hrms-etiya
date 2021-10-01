@@ -68,12 +68,12 @@ export class CvAddComponent implements OnInit {
         (response: any) => {
           console.log(this.cvAddForm.value);
           //  this.pageReloadDelay();
-          this.toastrService.success(response.message, 'CV eklendi');
+          this.toastrService.success(response.message, 'Added Resume');
         },
         (responseError) => {
           this.toastrService.error(
             JSON.stringify(responseError.error.data.errors),
-            'Doğrulama hatası'
+            'Validation Errors'
           );
         }
       );

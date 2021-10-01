@@ -40,13 +40,13 @@
       </div>
     </div> -->
 
-    <div *ngIf="userId=='systemEmployee'" class="accordion sticky-top sticky-sm-top" style="margin-top: 100px;" >
+    <div *ngIf="userId=='systemEmployee'" class="accordion sticky-top sticky-sm-top mt-5"  style="z-index : 1 !important;">
       <app-employee-side-menu></app-employee-side-menu>
     </div>
-    <div *ngIf="userId=='employer'" style="margin-top: 100px;">
-      <app-employee-side-menu></app-employee-side-menu>
+    <div *ngIf="userId=='employer'" class="accordion sticky-top sticky-sm-top mt-5" style="z-index : 1 !important;" >
+      <app-employer-side-menu></app-employer-side-menu>
     </div>
-    <div *ngIf="userId=='candidate'" class="accordion sticky-top sticky-sm-top" style="margin-top: 100px;"> 
+    <div *ngIf="userId=='candidate'" class="accordion sticky-top sticky-sm-top mt-5" style="z-index : 1 !important;" > 
       <app-candidate-side-menu></app-candidate-side-menu>
     </div>
     

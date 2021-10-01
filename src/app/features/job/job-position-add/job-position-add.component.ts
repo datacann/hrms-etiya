@@ -31,11 +31,11 @@ export class JobPositionAddComponent implements OnInit {
     if(this.jobPositionAddForm.valid){
       console.log(this.jobPositionAddForm.value)
       this.pageReloadDelay()
-      this.toastrService.success("Pozisyon Eklendi")
+      this.toastrService.success("Added Position")
       this.jobPositionService.getJobPositionAdd(this.jobPositionAddForm.value).subscribe(data=>{
     })
   }else{
-    this.toastrService.error("Pozisyon Eklenemedi")
+    this.toastrService.error("Failed to Add Position")
   }
   }
 

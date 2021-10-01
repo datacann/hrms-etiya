@@ -32,7 +32,7 @@ export class UpdateCvTitleComponent implements OnInit {
 
   updateTitle(){
     this.cvService.updateCvTitle(this.cv,this.updateTitleForm.value["title"],this.catchCvId).subscribe((response:any)=>{
-      this.toastrService.success("güncellendi")
+      this.toastrService.success("Updated")
       this.updateTitleForm.reset();
       setTimeout(()=>window.location.reload(),1000)
     })

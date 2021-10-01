@@ -36,7 +36,7 @@ export class UpdateEmailPasswordComponent implements OnInit {
         let message = JSON.stringify(responseError.error.data.errors);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Errors'
         );
       })
     }

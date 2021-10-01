@@ -35,7 +35,7 @@ export class JobAdvertVerifyComponent implements OnInit {
         let message = JSON.stringify(responseError.error.data.errors);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Error'
         );
       }
       )

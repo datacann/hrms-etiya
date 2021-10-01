@@ -48,7 +48,7 @@ export class CandidateSignComponent implements OnInit {
           let candidateModel = Object.assign({}, this.candidateSignForm.value);
           this.candidateService.add(candidateModel).subscribe((response) => {
             console.log(candidateModel)
-            this.toastrService.success("Kaydınız yapıldı.", candidateModel.firstName)
+            this.toastrService.success("Succesfull Registiration", candidateModel.firstName)
           })
         }
       
@@ -65,7 +65,7 @@ export class CandidateSignComponent implements OnInit {
 
       } else {
         this.checkNationalityId = true
-        this.toastrService.error("bu natinality id kullanılıyor")
+        this.toastrService.error("this natinality id is used")
       }
     })
   }
@@ -76,7 +76,7 @@ export class CandidateSignComponent implements OnInit {
         this.checkEmail = false   
       } else {
         this.checkEmail = true
-        this.toastrService.error("bu e posta kullanılıyor") 
+        this.toastrService.error("this email is used") 
       }
     })
   }
@@ -85,7 +85,7 @@ export class CandidateSignComponent implements OnInit {
     if(this.password===this.verifyPassword){
       return true;
     }else{
-      this.toastrService.error("şifreler uyuşmuyor")
+      this.toastrService.error("unmatched passwords")
       return false;   
     }
 }

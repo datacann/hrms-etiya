@@ -34,13 +34,13 @@ export class CandidateGithubComponent implements OnInit {
     if(this.githubForm.valid){
       this.candidateService.addGithub(this.githubForm.value,this.getCandidateId()).subscribe((data:any)=>{
         this.pageReloadDelay()
-        this.toastrService.success("Github hesabı eklendi")
+        this.toastrService.success("Added Github Account")
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.data.errors);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Error'
         );
         
       }

@@ -30,7 +30,6 @@ export class UserService {
 
   getEmployer():any{
     return JSON.parse(localStorage.getItem('user')).data
-
   }
 }
 

@@ -1,30 +1,50 @@
-<!-- 
-<div *ngFor="let cvs of cv">
-  {{cvs.title}}
-</div> -->
+<div class="container">
 
-<div class="row">
-  <div class="col-md-3">
-    <app-side-menu></app-side-menu>
+  <div class="row">
+    <div class="col-md-3">
+      <app-side-menu></app-side-menu>
+  
+    </div>
+    <div class="col-md-9">
 
-  </div>
-  <div class="col-md-9">
-
-    <div class="container">
-      <h2 style="margin-top: 30px;">CV nizi Oluşturun</h2>
-
+<div class="container">
+  <ul class="mt-3 nav nav-tabs justify-content-center">
+    <li class="nav-item"  >
+      <a aria-current="page" href="#title" class="nav-link link-success active" data-bs-toggle="tab">Title & Cover Letter</a>
+    </li>
+    <li class="nav-item">
+      <a href="#image" class="nav-link link-success" data-bs-toggle="tab">Image</a>
+    </li>
+    <li class="nav-item">
+      <a href="#school" class="nav-link link-success" data-bs-toggle="tab">School</a>
+    </li>
+    <li class="nav-item">
+      <a href="#language" class="nav-link link-success" data-bs-toggle="tab">Language</a>
+    </li>
+    <li class="nav-item">
+      <a href="#jobExperience" class="nav-link link-success" data-bs-toggle="tab">Job Experience</a>
+    </li>
+    <li class="nav-item">
+      <a href="#skill" class="nav-link link-success" data-bs-toggle="tab">Skill</a>
+    </li>
+    <li class="nav-item">
+      <a href="#gitHub" class="nav-link link-success" data-bs-toggle="tab">GitHub</a>
+    </li>
+    <li class="nav-item">
+      <a href="#linkedIn" class="nav-link link-success" data-bs-toggle="tab">LinkedIn</a>
+    </li>
+  </ul>
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active " id="title">
       <form [formGroup]="cvAddForm">
-
         <div class="mb-3">
           <label>CV Title</label>
           <input type="text" placeholder="cvTitle" formControlName="title" class="form-control" />
         </div>
-
         <div class="input-group">
           <span class="input-group-text">cover letter</span>
           <textarea class="form-control" aria-label="With textarea" formControlName="coverLetter"></textarea>
         </div>
-
         <div class="card-footer">
           <button [disabled]="!cvAddForm.valid" (click)="cvAdd()" class="btn btn-primary">
             Cv yi Oluştur
@@ -38,7 +58,7 @@
         <ng-template pTemplate="header">
           <tr>
             <th>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center ">
                 Cv Title
               </div>
             </th>
@@ -67,43 +87,49 @@
             </td>
             <td>
               <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                class="p-button-sm p-button-rounded p-button-danger mt-2 " pButton type="button" icon="pi pi-times"
-                (click)="catchCvId(cv.id)"></button>
+                (click)="catchCvId(cv.id)" type="button" class="btn btn-outline-primary rounded-5"> <i
+                  class="bi bi-pencil-square"></i></button>
             </td>
             <td>
-              <span class="p-column-title">CoverLetter</span>
-              {{cv.coverLetter}}
+              <div class="text-break">
+                {{cv.coverLetter}}
+              </div>
+
             </td>
             <td>
               <button data-bs-toggle="offcanvas" data-bs-target="#letterCanvas" aria-controls="letterCanvas"
-                class="p-button-sm p-button-rounded p-button-danger mt-2 " pButton type="button" icon="pi pi-times"
-                (click)="catchCvId(cv.id)"></button>
+                (click)="catchCvId(cv.id)" type="button" class="btn btn-outline-primary rounded-5"> <i
+                  class="bi bi-pencil-square"></i></button>
             </td>
           </tr>
         </ng-template>
       </p-table>
-
-
-
-
-
-
-
-      <app-candidate-image></app-candidate-image>
-      <app-candidate-school></app-candidate-school>
-      <app-candidate-skill></app-candidate-skill>
-      <app-candidate-language></app-candidate-language>
-      <app-candidate-experience></app-candidate-experience>
-      <div class="row">
-        <div class="col-md-6">
-          <app-candidate-linkedin></app-candidate-linkedin>
-        </div>
-        <div class="col-md-6">
-          <app-candidate-github></app-candidate-github>
-        </div>
+    </div>
+      <div class="tab-pane fade" id="image">
+        <app-candidate-image></app-candidate-image>
+      </div>
+      <div class="tab-pane fade" id="school">
+        <app-candidate-school></app-candidate-school>
+      </div>
+      <div class="tab-pane fade" id="language">
+        <app-candidate-language></app-candidate-language>
+      </div>
+      <div class="tab-pane fade" id="jobExperience">
+        <app-candidate-experience></app-candidate-experience>
+      </div>
+      <div class="tab-pane fade" id="skill">
+        <app-candidate-skill></app-candidate-skill>
+      </div>
+      <div class="tab-pane fade" id="gitHub">
+        <app-candidate-github></app-candidate-github>
+      </div>
+      <div class="tab-pane fade" id="linkedIn">
+        <app-candidate-linkedin></app-candidate-linkedin>
       </div>
     </div>
-  </div>
-
+ </div>
+</div>
+</div>
   <app-update-cv-title [catchCvId]="catchCvIdValue"></app-update-cv-title>
   <app-update-cv-letter [catchCvId]="catchCvIdValue"></app-update-cv-letter>
+

@@ -54,18 +54,18 @@ export class CandidateSchoolComponent implements OnInit {
       this.candidateSchoolService.add(this.candidateSchoolForm.value).subscribe((response:any)=>{
         console.log(this.candidateSchoolForm.value);
         this.pageReloadDelay()
-        this.toastrService.success(response.message ,"okul bilgileri eklendi")
+        this.toastrService.success(response.message ,"Added School Information")
         this.candidateSchoolForm.reset()
       },
       (responseError) => {
         this.toastrService.error(
           JSON.stringify(responseError.error.data.errors),
-          'Doğrulama hatası'
+          'Validation Error'
         );
       }
     );
   } else {
-    this.toastrService.error('iki kere aynı pozisyon eklenemez');
+    this.toastrService.error('Cannot add the same position twice');
   }
 
 }

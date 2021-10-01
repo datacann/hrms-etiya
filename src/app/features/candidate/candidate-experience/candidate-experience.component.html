@@ -1,11 +1,11 @@
 
 
 <div class="card mb-3">
-  <img class="card-img-top"
-    src="https://cdn.discordapp.com/attachments/876229287307542581/891670868613283950/Publisher-Advisory_Get-Ready-for-the-Office-2010-End-of-Support-header_1.jpg">
-  <div class="card-body">
-    <h5 class="card-title">İş Bilgileri</h5>
-    <p class="card-text">İş Bilgilerinizi Girerek CV'nizi güçlendirin</p>
+  <!-- <img class="card-img-top"
+    src="https://cdn.discordapp.com/attachments/876229287307542581/891670868613283950/Publisher-Advisory_Get-Ready-for-the-Office-2010-End-of-Support-header_1.jpg"> -->
+  <div class="card-body text-center">
+    <h5 class="card-title">Job Experience Information</h5>
+    <p class="card-text">Strengthen your Resume by Entering Your Job Information</p>
     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal1">
       İş Bilgisi Ekle
     </button>
@@ -38,8 +38,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          <button type="button" (click)="add()" class="btn btn-primary">Kaydet</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="add()" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
         <tr>
           <th>
             <div class="d-flex justify-content-between align-items-center">
-              position
+              Position
             </div>
           </th>
           <th>
@@ -82,7 +82,7 @@
       <ng-template pTemplate="body" let-experience>
         <tr class="p-selectable-row">
           <td>
-            <span class="p-column-title">position</span>
+            <span class="p-column-title">Position</span>
             {{experience.position.title}}
           </td>
 
@@ -100,8 +100,12 @@
             {{ experience.workPlace }}
           </td>
           <td>
-            <button class="p-button-sm p-button-rounded p-button-danger mt-2"
-              (click)="deleteJobExperience(experience.id)" pButton type="button" icon="pi pi-times"></button>
+            <!-- <button class="p-button-sm p-button-rounded p-button-danger mt-2"
+              (click)="deleteJobExperience(experience.id)" pButton type="button" icon="pi pi-times"></button> -->
+              <button
+              (click)="deleteJobExperience(experience.id)" type="button" class="btn btn-outline-primary rounded-5"> <i
+                class="bi bi-trash"></i></button>
+
           </td>
         </tr>
       </ng-template>

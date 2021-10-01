@@ -25,7 +25,7 @@ export class EmployerService {
   }
 
   getEmployerById(id:number):Observable<Employer>{
-    return this.httpClient.get<Employer>(this.apiUrl+"/get/byId?emplId="+id)
+    return this.httpClient.get<Employer>(this.apiUrl + "/get/byId?emplId=" + id)
   }
 
   updateCompanyName(employer:Employer){

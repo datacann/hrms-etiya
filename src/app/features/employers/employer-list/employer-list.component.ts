@@ -11,6 +11,7 @@ export class EmployerListComponent implements OnInit {
 
   
   employers:Employer[]=[]
+  loading:boolean=false
 
   constructor(private employerService:EmployerService) { }
 

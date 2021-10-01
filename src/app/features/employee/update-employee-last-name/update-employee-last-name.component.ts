@@ -45,7 +45,7 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
     console.log(this.hrmsLastNameUpdateForm.value)
     if (this.hrmsLastNameUpdateForm.valid) {
       this.employeeService.updateEmployeeLastName(this.hrmsLastNameUpdateForm.value, this.getCandidataId()).subscribe((data: any) => {
-        this.toastrService.success("Güncellendi")
+        this.toastrService.success("Updated")
         console.log("12-" + this.hrmsLastNameUpdateForm.value)
         console.log(this.getCandidataId())
       },
@@ -53,7 +53,7 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
           let message = JSON.stringify(responseError.error.data.errors);
           this.toastrService.error(
             message.replace(/{|}|"/gi, ''),
-            'Doğrulama hatası'
+            'Validation Errors'
           );
 
         }

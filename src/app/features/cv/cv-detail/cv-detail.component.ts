@@ -30,6 +30,7 @@ export class CvDetailComponent implements OnInit {
   candidateSchools: any;
   candidateSkills: any;
   candidateImage:any
+  loading:boolean=false
 
   loggedUser: any;
   constructor(

@@ -42,19 +42,19 @@ export class CandidateSkillComponent implements OnInit {
   add(){
     if(this.candidateSkillForm.valid){
       this.candidateSkillService.add(this.candidateSkillForm.value).subscribe((response:any)=>{
-        this.toastrService.success(response.message ,"yetenek bilgileri eklendi")
+        this.toastrService.success(response.message ,"Added Skill Informations")
         this.candidateSkillForm.reset()
         this.pageReloadDelay()
       },
       (responseError) => {
         this.toastrService.error(
           JSON.stringify(responseError.error.data.errors),
-          'Doğrulama hatası'
+          'Validation Errors'
         );
       }
     );
   } else {
-    this.toastrService.error('iki yetenek iki kere eklenemez');
+    this.toastrService.error('two abilities cannot be added twice');
   }
 
 }

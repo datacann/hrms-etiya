@@ -55,18 +55,18 @@ addEmployer() {
   if (this.employerSignForm.valid) {
     this.employerService.add(this.employerSignForm.value).subscribe(
       (response: any) => {
-        this.toastrService.success(response.message,'Başarılı');
+        this.toastrService.success(response.message,'Succesful');
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.data.errors);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Errors'
         );
       }
     );
   } else {
-    this.toastrService.error( 'Formunuz eksik', 'Dikkat!');
+    this.toastrService.error( 'Missing Form', 'Caution!');
   }
 }
 
@@ -74,7 +74,7 @@ checkPassword(){
   if(this.password===this.verifyPassword){
     return true;
   }else{
-    this.toastrService.error("şifreler uyuşmuyor")
+    this.toastrService.error("passwords do not match")
     return false;   
   }
 }
@@ -85,7 +85,7 @@ checkByEmail() {
       this.checkEmail = false   
     } else {
       this.checkEmail = true
-      this.toastrService.error("bu e posta kullanılıyor") 
+      this.toastrService.error("this email is being used") 
     }
   })
 }

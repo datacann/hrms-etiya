@@ -1,11 +1,10 @@
+<div class="container">
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
         <app-side-menu></app-side-menu>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9 mt-5">
         <div class="container">
-
-
             <div class="content">
                 <div class="card">
                     <div class="card-header">
@@ -55,9 +54,10 @@
                             </div>
                             <div class="mb-3">
                                 <label>workModel</label>
-                                <select name="workModels" id="workModels" class="form-select"
-                                    formControlName="workModel">
-                                    <option *ngFor="let workModel of workModels">{{workModel}}</option>
+                                <select name="workTimes" id="workTimes" class="form-select" formControlName="workTime">
+                                    <option value="" disabled> Work Models </option>
+                                    <option [ngValue]="true">part-time</option>
+                                    <option [ngValue]="false">full-time</option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -71,8 +71,12 @@
                             <div class="mb-3">
                                 <label>Work Time</label>
                                 <select name="workTimes" id="workTimes" class="form-select" formControlName="workTime">
-                                    <option *ngFor="let workTime of workTimes">{{workTime}}</option>
+                                    
+                                    <option value="" disabled> Work Types </option>
+                                    <option [ngValue]="true">Office</option>
+                                    <option [ngValue]="false">Hybrid</option>
                                 </select>
+
                             </div>
                         </form>
                     </div>
@@ -85,4 +89,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

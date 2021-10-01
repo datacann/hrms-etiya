@@ -1,34 +1,40 @@
+<div class="container">
+
+
 <div class="row">
   <div class="col-md-3">
     <app-side-menu></app-side-menu>
-
   </div>
+  
   <div class="col-md-9">
-    <div class="container">
       <div style="margin-top: 100px;">
-        <p-accordion [multiple]="true">
-          <div class="text-center text-uppercase">
-            <h3> Profil Bilgileri</h3>
-          </div>
-
-          <p-accordionTab header="Kişisel Bilgiler">
-
-            <!-- <p class="card-text">
-                Firstname:
-                 <span class="fw-bold"> {{user().firstName}} <app-hrms-update></app-hrms-update></span>
+        <p-accordion [multiple]="true" >
+           <div class="text-center text-uppercase">
+               <h3> Profile </h3> 
+           </div>
+           <p-accordionTab header="Kişisel Bilgiler">
+              <p class="card-text">
+                First Name:
+                 <span class="fw-bold"> {{user().firstName | uppercase}} 
+                   <app-update></app-update></span>
                </p>
-    
+
                <p class="card-text">
-               lastName:
-                 <span class="fw-bold"> {{user().lastName}} <app-hrms-lastname-update></app-hrms-lastname-update>
-                  </span>
+               last Name:
+                 <span class="fw-bold"> {{user().lastName | uppercase}} 
+                  <app-update-employee-last-name></app-update-employee-last-name>
+                </span>
+                  
                </p>
                <p class="card-text">
                  Email: <span class="fw-bold">{{user().email}}</span>
-               </p> -->
+               </p>
           </p-accordionTab>
+          <p-accordionTab header="Onaylanmamış İş İlanları">
+            <app-apply-changes></app-apply-changes>
+        </p-accordionTab>
         </p-accordion>
-      </div>
-    </div>
+        </div>
   </div>
+</div>
 </div>

@@ -21,14 +21,13 @@ export class JobPositionAddGuard implements CanActivate {
         return true
       }
       else {
-        this.toastrService.error("Geçersiz Yetki")
-        this.router.navigate(["candidateAdd"])
+        this.toastrService.error("Invalid Authority")
+        this.router.navigate(["login"])
         return false
       }
     }
-
     else {
-      this.toastrService.warning("Giriş Yapmalısınız")
+      this.toastrService.warning("You must login")
       this.router.navigate(["login"])
       return false
     }

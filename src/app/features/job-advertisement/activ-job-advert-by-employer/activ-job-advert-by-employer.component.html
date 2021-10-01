@@ -2,113 +2,154 @@
   <div class="col-md-2">
       <app-side-menu></app-side-menu>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 mt-5">
 
 <div class="container">
-    <p-table *ngIf="loading == false; else loadingInfo" id="myTable" #dt [value]="activeJobsByEmployer" dataKey="id"
-      styleClass="p-datatable-striped" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-      sortField="createdAt" [sortOrder]="-1" [globalFilterFields]="[
-          'employer.companyName', 
-          'position.title',
-          'openPositions',
-          'createdAt',
-          'deadline',
-        ]">
-      <ng-template pTemplate="caption">
-        <div class="table-header">
-          <h4 style="text-align: center;">List of Active Jobs Advertisements</h4>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
+  <p-table #dt [value]="employerJobAdvertisements" dataKey="id" styleClass="p-datatable-sm" [rowHover]="true"
+  [rows]="10" [showCurrentPageReport]="false" [rowsPerPageOptions]="[10,20,50,100]" [paginator]="true"
+  [filterDelay]="0">
+  <ng-template pTemplate="header">
+      <tr>
           <th pSortableColumn="employer.companyName">
-            <div class="d-flex justify-content-between align-items-center">
-              Company Name
-              <p-sortIcon field="employer.companyName"></p-sortIcon>
-              <p-columnFilter type="text" field="employer.companyName" display="menu" class="ms-auto"></p-columnFilter>
-            </div>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  İş Veren
+                  <p-sortIcon field="employer.companyName"></p-sortIcon>
+                  <p-columnFilter type="text" field="employer.companyName" display="menu"
+                      class="p-ml-auto">
+                  </p-columnFilter>
+              </div>
           </th>
-          <th pSortableColumn="position.title">
-            <div class="d-flex justify-content-between align-items-center">
-              Location
-              <p-sortIcon field="position.title"></p-sortIcon>
-            </div>
+          <th pSortableColumn="city.name">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Şehir
+                  <p-sortIcon field="city.name"></p-sortIcon>
+              </div>
           </th>
+
           <th pSortableColumn="position.title">
-            <div class="d-flex justify-content-between align-items-center">
-              Position
-              <p-sortIcon field="position.title"></p-sortIcon>
-            </div>
-          </th>
-          <th pSortableColumn="position.title">
-            <div class="d-flex justify-content-between align-items-center">
-              Work Model
-              <p-sortIcon field="position.title"></p-sortIcon>
-            </div>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Pozisyon
+                  <p-sortIcon field="position.title"></p-sortIcon>
+              </div>
           </th>
           <th pSortableColumn="openPositions">
-            <div class="d-flex justify-content-between align-items-center">
-              Open Positions
-              <p-sortIcon field="openPositions"></p-sortIcon>
-            </div>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Açık Pozisyon
+                  <p-sortIcon field="openPositions"></p-sortIcon>
+              </div>
           </th>
           <th pSortableColumn="createdAt">
-            <div class="d-flex justify-content-between align-items-center">
-              Release Date
-              <p-sortIcon field="createdAt"></p-sortIcon>
-            </div>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Oluşturulma Tarihi
+                  <p-sortIcon field="createdAt"></p-sortIcon>
+              </div>
           </th>
           <th pSortableColumn="deadline">
-            <div class="d-flex justify-content-between align-items-center">
-              Deadline
-              <p-sortIcon field="deadline"></p-sortIcon>
-            </div>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Son Başvuru Tarihi
+                  <p-sortIcon field="deadline"></p-sortIcon>
+              </div>
           </th>
-          <th></th>
-          <th></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-job>
-        <tr class="p-selectable-row">
-          <td>
-            <span class="p-column-title">Company Name</span>
-            {{ job.employer.companyName }}
+          <th pSortableColumn="active">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Durum
+                  <p-sortIcon field="active"></p-sortIcon>
+              </div>
+          </th>
+          <th style="width: 3.5rem"></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-jobAdvertisement>
+      <tr class="p-selectable-row">
+          <td class="text-capitalize">
+              {{jobAdvertisement.employer.companyName}}
+          </td>
+          <td class="text-capitalize">
+              {{jobAdvertisement.city.name}}
+          </td>
+          <td class="text-capitalize">
+              {{jobAdvertisement.position.title}}
           </td>
           <td>
-            <span class="p-column-title">Location</span>
-            {{ job.city.name }}
+              {{jobAdvertisement.openPositions}}
           </td>
           <td>
-            <span class="p-column-title">Position</span>
-            {{ job.position.title }}
+              {{jobAdvertisement.createdAt | date: 'MM/dd/yyyy'}}
           </td>
           <td>
-            <span class="p-column-title">Location</span>
-            {{ job.workModel }}
+              {{jobAdvertisement.deadline | date: 'MM/dd/yyyy'}}
           </td>
           <td>
-            <span class="p-column-title">Open Positions</span>
-            {{ job.openPositions }}
+              {{jobAdvertisement.active }}
           </td>
           <td>
-            <span class="p-column-title">Release Date</span>
-            {{ job.createdAt | date: "MMMM d, y" }}
+              <ng-container *ngIf="jobAdvertisement.active === true; else passive">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                      data-bs-target="#activeBackDrop" (click)="catchId(jobAdvertisement.id)">
+                      <i class="bi bi-lightbulb"></i></button>
+                  <div class="modal fade" id="activeBackDrop" data-bs-backdrop="static"
+                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="activeBackDropLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title text-uppercase" id="activeBackDrop   Label">
+                                      İş İlanı Pasifleştirme</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-start">
+                                  İş ilanını pasif yapmak istediğinize emin misiniz?
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-light"
+                                      data-bs-dismiss="modal">Vazgeç</button>
+                                  <button (click)="updateActivationJobAdvertisement(jobAdvertisement)"
+                                      type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Pasif</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </ng-container>
+              <ng-template #passive>
+                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                      data-bs-target="#passiveBackDrop" (click)="catchId(jobAdvertisement.id)">
+                      <i class="bi bi-lightbulb-fill"></i></button>
+                  <div class="modal fade" id="passiveBackDrop" data-bs-backdrop="static"
+                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="passiveBackDropLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title text-uppercase" id="passiveBackDropLabel">
+                                      İş İlanı Aktifleştirme</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-start">
+                                  İş ilanını aktif yapmak istediğinize emin misiniz?
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-light"
+                                      data-bs-dismiss="modal">Vazgeç</button>
+                                  <button (click)="updateActivationJobAdvertisement(jobAdvertisement)"
+                                      type="button" class="btn btn-success"
+                                      data-bs-dismiss="modal">Aktif</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </ng-template>
           </td>
-          <td>
-            <span class="p-column-title">Deadline</span>
-            {{ job.deadline | date: "MMMM d, y" }}
-          </td>  
-        </tr>
-     
-      </ng-template>
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="8">No jobs found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+      <tr>
+          <td colspan="8">Veri mevcut değil.</td>
+      </tr>
+  </ng-template>
+</p-table>
   </div>
   <ng-template #loadingInfo>
     <div class="text-center d-flex flex-column align-items-center justify-content-center" style="height: 500px">

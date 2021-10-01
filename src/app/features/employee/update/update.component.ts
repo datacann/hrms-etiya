@@ -44,7 +44,7 @@ export class UpdateComponent implements OnInit {
     console.log(this.hrmsFirstNameUpdateForm.value)
     if(this.hrmsFirstNameUpdateForm.valid){
       this.employeeService.updateEmployeeFirstName(this.hrmsFirstNameUpdateForm.value,this.getCandidataId()).subscribe((data:any)=>{
-        this.toastrService.success("Güncellendi")
+        this.toastrService.success("Updated")
         console.log("12-"+this.hrmsFirstNameUpdateForm.value)
         console.log(this.getCandidataId())
       },
@@ -52,7 +52,7 @@ export class UpdateComponent implements OnInit {
         let message = JSON.stringify(responseError.error.data.errors);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation Errors'
         );
         
       }

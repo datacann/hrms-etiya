@@ -32,7 +32,7 @@ export class UpdateCvLetterComponent implements OnInit {
 
   updateCoverLetter(){
     this.cvService.updateCvCoverLetter(this.cv,this.updateCoverLetterForm.value["coverLetter"],this.catchCvId).subscribe((response:any)=>{
-      this.toastrService.success("güncellendi")
+      this.toastrService.success("Updated")
       this.updateCoverLetterForm.reset();
       setTimeout(()=>window.location.reload(),1000)
     })

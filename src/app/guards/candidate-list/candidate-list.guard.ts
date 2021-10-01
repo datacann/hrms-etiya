@@ -25,7 +25,7 @@ export class CandidateListGuard implements CanActivate {
       }
       else {
         this.toastrService.error("Geçersiz Yetki")
-        this.router.navigate(["candidateAdd"])
+       
         return false
       }
 

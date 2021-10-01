@@ -51,18 +51,18 @@ export class CandidateExperienceComponent implements OnInit {
       this.candidateExperienceService.add(this.candidateExperienceForm.value).subscribe((response:any)=>{
         console.log(this.candidateExperienceForm.value);
         this.pageReloadDelay();
-        this.toastrService.success(response.message ,"iş bilgileri eklendi")
+        this.toastrService.success(response.message ,"Added Job Experience")
         this.candidateExperienceForm.reset()
       },
       (responseError) => {
         this.toastrService.error(
           JSON.stringify(responseError.error.data.errors),
-          'Doğrulama hatası'
+          'Validation Error'
         );
       }
     );
   } else {
-    this.toastrService.error('hata');
+    this.toastrService.error('error');
   }
 
 }

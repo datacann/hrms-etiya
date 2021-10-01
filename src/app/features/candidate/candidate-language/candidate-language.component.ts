@@ -51,19 +51,19 @@ export class CandidateLanguageComponent implements OnInit {
     if (this.candidateLanguageForm.valid) {
       this.candidateLanguageService.add(this.candidateLanguageForm.value).subscribe(
         (response: any) => {
-          // this.pageReloadDelay()
-          this.toastrService.success('Başarılı');
+          this.pageReloadDelay()
+          this.toastrService.success('Successful');
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);
           this.toastrService.error(
             message.replace(/{|}|"/gi, ''),
-            'Doğrulama hatası'
+            'Validation Error'
           );
         }
       );
     } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat!');
+      this.toastrService.error('Incomplete Form', 'Caution!');
     }
   }
 
@@ -96,11 +96,11 @@ export class CandidateLanguageComponent implements OnInit {
   deleteLanguage(langId: number) {
     this.candidateLanguageService.deleteById(langId).subscribe((response: any) => {
         this.toastrService.warning('Delete successful');
-        // this.pageReloadDelay();
+        this.pageReloadDelay();
       });
   }
 
-//  pageReloadDelay() {
-//     setTimeout(location.reload.bind(location), 1000);
-//   }
+ pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
 }

@@ -10,6 +10,7 @@ import { JobPositionService } from 'src/app/services/job-position.service';
 export class JobPositionListComponent implements OnInit {
 
   jobPositions:JobPosition[]=[]
+  loading:boolean=false
 
   constructor(private jobPositionService:JobPositionService) { }
 

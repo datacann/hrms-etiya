@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -56,6 +55,7 @@ import { ApplyChangesComponent } from './features/employee/apply-changes/apply-c
 import { UpdateCvTitleComponent } from './features/cv/update-cv-title/update-cv-title.component';
 import { UpdateCvLetterComponent } from './features/cv/update-cv-letter/update-cv-letter.component';
 import { FooterComponent } from './features/footer/footer.component';
+import { ProfileComponent } from './features/employee/profile/profile.component';
 
 
 @NgModule({
@@ -104,7 +104,8 @@ import { FooterComponent } from './features/footer/footer.component';
     ApplyChangesComponent,
     UpdateCvTitleComponent,
     UpdateCvLetterComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
     
     
   ],

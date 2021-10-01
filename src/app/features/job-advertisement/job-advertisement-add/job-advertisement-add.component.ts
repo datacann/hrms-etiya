@@ -61,18 +61,19 @@ export class JobAdvertisementAddComponent implements OnInit {
     if (this.jobAdvertisementForm.valid) {
       this.jobAdvertisementService.add(this.jobAdvertisementForm.value).subscribe(
         (response: any) => {
-          this.toastrService.success('Başarılı');
+          this.toastrService.success('Successful');
+          this.pageReloadDelay()
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);
           this.toastrService.error(
             message.replace(/{|}|"/gi, ''),
-            'Doğrulama hatası'
+            'Validation Error'
           );
         }
       );
     } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat!');
+      this.toastrService.error('Incomplete Form', 'Caution!');
     }
   }
 
@@ -95,5 +96,7 @@ export class JobAdvertisementAddComponent implements OnInit {
       this.employers = data.data
     })
   }
-
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
 }

@@ -33,23 +33,21 @@ export class LoginComponent implements OnInit {
     let user : User = this.loginForm.value;
     this.userService.getUser(user).subscribe(data=>{
       if(this.userExistsByLogin){
-        this.toastrService.success("Sisteme giriş yapıldı.");
+        this.toastrService.success("logged into the system");
         localStorage.setItem("user",JSON.stringify(data))
       }else{
-        this.toastrService.error("Kullanıcı bilgileri hatalı.")
+        this.toastrService.error("User information is incorrect.")
       }
     })
   }
 
-
-
   userExistsByLogin(){
      this.userService.userExistsByLogin(this.loginForm.value).subscribe((data:any)=>{
        if(data.data== true){
-          this.toastrService.success("giriş başarılı")
+          this.toastrService.success("Login successful")
           return true
        }else{
-         this.toastrService.error("bilgiler hatalı")
+         this.toastrService.error("information is incorrect")
          return false
        }
      })
