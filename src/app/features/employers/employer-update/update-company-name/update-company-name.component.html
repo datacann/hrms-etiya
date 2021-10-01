@@ -1,27 +1,36 @@
-<div class="container">
+<a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
 
-
-<div class="row">
-  <div class="col-md-3">
-    <app-side-menu></app-side-menu>
-  </div>
-  <div class="col-md-9">
-    <div class="container">
-      <div class="text-center">
-        <main class="form-signin">
-          <form [formGroup]="updatecompanyNameForm">
-
-            <div class="form-floating">
-              <input formControlName="companyName" type="email" class="form-control" id="floatingInput"
-                placeholder="Company name">
-              <label for="floatingInput">Company Name</label>
-            </div>
-            <button (click)="updateCompanyName()" class="w-100 btn btn-lg btn-primary" type="submit">update</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-          </form>
-        </main>
+  <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+          <h6 class="mb-0">{{user.companyName}}</h6>
+          
       </div>
-    </div>
+  
+          <button type="button" class="btn btn-sm btn-danger mt-3 me-2"  data-bs-toggle="collapse" data-bs-target="#companyNameCollapse">Update</button>
   </div>
-</div>
+</a>
+<!-- First Name Collapse Start -->
+<div class="collapse" id="companyNameCollapse">
+  <div class="card card-body">
+      <div class="container w-100 mt-3">
+          <form class="p-4 p-md-5 border rounded-3 bg-white mb-3" [formGroup]="updatecompanyNameForm">
+              <div class="row g-3 d-flex justify-content-center">
+                  <div class="col-md-6">
+                      <div class="form-floating mb-1">
+                          <input type="text" class="form-control" placeholder="Company Name"
+                              formControlName="companyName">
+                          <label for="companyName">Company Name</label>
+                      </div>
+                      <div class="form-floating d-flex">
+                          <button type="button" class="w-100 btn btn-lg btn-danger mt-3 me-2" data-bs-toggle="collapse"
+                              data-bs-target="#companyNameCollapse" aria-expanded="false"
+                              aria-controls="companyNameCollapse">Cancel</button>
+                          <button [disabled]="!updatecompanyNameForm.valid" type="submit"
+                              class="w-100 btn btn-lg btn-primary mt-3" (click)="updateCompanyName()">Update</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
 </div>

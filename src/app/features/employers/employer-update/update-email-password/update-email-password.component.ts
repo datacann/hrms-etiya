@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EmployerService } from 'src/app/services/employer.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-email-password',
@@ -11,13 +12,17 @@ import { EmployerService } from 'src/app/services/employer.service';
 export class UpdateEmailPasswordComponent implements OnInit {
 
   updateWebsiteAndEmailForm: FormGroup
+  user:any
+  
 
   constructor(private formBuilder: FormBuilder, private toastrService: ToastrService,
-    private employerService: EmployerService) { }
+    private employerService: EmployerService,
+    private userService:UserService) { }
 
   ngOnInit(): void {
 
     this.createUpdateForm()
+    this.Userget()
   }
 
   createUpdateForm() {
@@ -45,5 +50,8 @@ export class UpdateEmailPasswordComponent implements OnInit {
       console.log(this.updateWebsiteAndEmailForm)
     }
   }
-
+  Userget(){
+    this.user =this.userService.getEmployer()
+    return this.user
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EmployerService } from 'src/app/services/employer.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-phone-number',
@@ -12,12 +13,13 @@ export class UpdatePhoneNumberComponent implements OnInit {
 
   
   updateForm: FormGroup
-
-  constructor(private formBuilder: FormBuilder, private toastrService: ToastrService,
+  user:any
+  constructor(private formBuilder: FormBuilder, private toastrService: ToastrService,private userService:UserService,
     private employerService: EmployerService) { }
 
   ngOnInit(): void {
     this.createUpdateForm()
+    this.Userget()
   }
 
   createUpdateForm() {
@@ -45,5 +47,8 @@ export class UpdatePhoneNumberComponent implements OnInit {
       this.toastrService.warning("Missing Data")
     }
   }
-
+  Userget(){
+    this.user =this.userService.getEmployer()
+    return this.user
+  }
 }

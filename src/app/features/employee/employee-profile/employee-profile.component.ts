@@ -19,9 +19,12 @@ export class EmployeeProfileComponent implements OnInit {
   }
 
   user(){
+    
     return this.userService.getEmployer()
   }
 
+  
+  
   
 
 }

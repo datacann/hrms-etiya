@@ -12,6 +12,8 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
 
   hrmsLastNameUpdateForm: FormGroup
   userId: any
+
+
   constructor(private employeeService: EmployeeService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,) { }
@@ -48,6 +50,7 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
         this.toastrService.success("Updated")
         console.log("12-" + this.hrmsLastNameUpdateForm.value)
         console.log(this.getCandidataId())
+        this.pageReloadDelay()
       },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);
@@ -59,7 +62,11 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
         }
       )
     }
-
   }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
+
 
 }

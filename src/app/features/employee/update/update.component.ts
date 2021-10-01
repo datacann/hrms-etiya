@@ -45,8 +45,10 @@ export class UpdateComponent implements OnInit {
     if(this.hrmsFirstNameUpdateForm.valid){
       this.employeeService.updateEmployeeFirstName(this.hrmsFirstNameUpdateForm.value,this.getCandidataId()).subscribe((data:any)=>{
         this.toastrService.success("Updated")
+        this.pageReloadDelay()
         console.log("12-"+this.hrmsFirstNameUpdateForm.value)
         console.log(this.getCandidataId())
+        
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.data.errors);
@@ -63,12 +65,15 @@ export class UpdateComponent implements OnInit {
     }
   }
 
- 
-  
+
   getCandidataId():any{
     this.userId=JSON.parse(localStorage.getItem("user"))
     console.log(this.userId.data.id)
     return this.userId.data.id
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
   
 

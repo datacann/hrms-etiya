@@ -24,24 +24,32 @@ export class EmployerService {
     return JSON.parse(localStorage.getItem('user')).data.id
   }
 
+  checkCompanyName(companyName: string) {
+    return this.httpClient.get<Employer>(this.apiUrl + "/exists/byCompanyName?companyName="+ companyName)
+  }
+  
+  checkWebsiteName(website: string) {
+    return this.httpClient.get<Employer>(this.apiUrl + "/exists/byWebsite?website="+ website)
+  }
+
   getEmployerById(id:number):Observable<Employer>{
     return this.httpClient.get<Employer>(this.apiUrl + "/get/byId?emplId=" + id)
   }
 
   updateCompanyName(employer:Employer){
-    return this.httpClient.put(this.apiUrl+"update/companyName?companyName="+employer.companyName+"&emplId="+employer.id,employer)
+    return this.httpClient.put(this.apiUrl+"/update/companyName?companyName="+employer.companyName+"&emplId="+employer.id,employer)
   }
 
   updateEmailAndWebsite(employer:Employer){
-    return this.httpClient.put(this.apiUrl+"update/emailAndWebsite?email="+employer.email+"&emplId="+employer.id+"&website="+employer.website,employer)
+    return this.httpClient.put(this.apiUrl+"/update/emailAndWebsite?email="+employer.email+"&emplId="+employer.id+"&website="+employer.website,employer)
   }
 
   updatePhoneNumber(employer:Employer){
-    return this.httpClient.put(this.apiUrl+"update/phoneNumber?emplId="+employer.id+"&phoneNumber="+employer.phoneNumber,employer)
+    return this.httpClient.put(this.apiUrl+"/update/phoneNumber?emplId="+employer.id+"&phoneNumber="+employer.phoneNumber,employer)
   }
 
   updateVerificaiton(employe:Employer){
-    return this.httpClient.put(this.apiUrl+"update/verification?emplId="+employe.id+"&status="+employe.verified,employe)
+    return this.httpClient.put(this.apiUrl+"/update/verification?emplId="+employe.id+"&status="+employe.verified,employe)
   }
 
 

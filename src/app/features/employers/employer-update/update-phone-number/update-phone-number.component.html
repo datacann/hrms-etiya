@@ -1,15 +1,36 @@
-<div class="text-center">
-    <main class="form-signin">
-        <form [formGroup]="updateForm">
-       
-         
-          <div class="form-floating">
-            <input formControlName="phoneNumber"  type="number" class="form-control" id="floatingPassword" placeholder="phone number">
-            <label for="floatingPassword">Phone Number</label>
-          </div>
-        
-          <button (click)="update()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-          
-        </form>
-      </main>
-    </div>
+<a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+
+  <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+          <h6 class="mb-0">Phone Number:{{user.phoneNumber}}</h6>
+
+      </div>
+
+          <button type="button" class="btn btn-sm btn-danger mt-3 me-2"  data-bs-toggle="collapse" data-bs-target="#phoneCollapse">Update</button>
+  </div>
+</a>
+<!-- First Name Collapse Start -->
+<div class="collapse" id="phoneCollapse">
+  <div class="card card-body">
+      <div class="container w-100 mt-3">
+          <form class="p-4 p-md-5 border rounded-3 bg-white mb-3" [formGroup]="updateForm">
+              <div class="row g-3 d-flex justify-content-center">
+                  <div class="col-md-6">
+                      <div class="form-floating mb-1">
+                          <input type="text" class="form-control" placeholder="phoneNumber"
+                              formControlName="phoneNumber">
+                          <label for="phoneNumber">Phone Number</label>
+                      </div>
+                      <div class="form-floating d-flex">
+                          <button type="button" class="w-100 btn btn-lg btn-danger mt-3 me-2" data-bs-toggle="collapse"
+                              data-bs-target="#phoneCollapse" aria-expanded="false"
+                              aria-controls="phoneCollapse">Cancel</button>
+                          <button [disabled]="!updateForm.valid" type="submit"
+                              class="w-100 btn btn-lg btn-primary mt-3" (click)="update()">Update</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

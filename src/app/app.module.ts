@@ -56,6 +56,7 @@ import { UpdateCvTitleComponent } from './features/cv/update-cv-title/update-cv-
 import { UpdateCvLetterComponent } from './features/cv/update-cv-letter/update-cv-letter.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { ProfileComponent } from './features/employee/profile/profile.component';
+import { EmployersProfileComponent } from './features/employers/employers-profile/employers-profile.component';
 
 
 @NgModule({
@@ -105,7 +106,10 @@ import { ProfileComponent } from './features/employee/profile/profile.component'
     UpdateCvTitleComponent,
     UpdateCvLetterComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    EmployersProfileComponent
+    
+    
     
     
   ],

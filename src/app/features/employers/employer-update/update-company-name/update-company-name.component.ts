@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EmployerService } from 'src/app/services/employer.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-company-name',
@@ -11,15 +12,17 @@ import { EmployerService } from 'src/app/services/employer.service';
 export class UpdateCompanyNameComponent implements OnInit {
 
   updatecompanyNameForm:FormGroup
+  user:any
 
   constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,
-    private employerService: EmployerService) { }
+    private employerService: EmployerService,private userService:UserService) { }
 
 
   ngOnInit(): void {
 
     this.createUpdateForm()
    console.log( this.employerService.getEmployerId())
+   this.Userget()
 
   }
 
@@ -46,6 +49,12 @@ export class UpdateCompanyNameComponent implements OnInit {
     else{
       this.toastrService.warning("Missing Data")
     }
+  }
+  
+  
+  Userget(){
+    this.user =this.userService.getEmployer()
+    return this.user
   }
 
 }

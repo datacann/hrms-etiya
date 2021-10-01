@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployerService } from 'src/app/services/employer.service';
 import { UserService } from 'src/app/services/user.service';
@@ -11,13 +12,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EmployerSignComponent implements OnInit {
 
-  constructor(private employerService:EmployerService,private formBuilder:FormBuilder,
-    private toastrService:ToastrService,private userService:UserService) { }
+  constructor(private employerService:EmployerService,
+    private formBuilder:FormBuilder,
+    private toastrService:ToastrService,
+    private userService:UserService,
+    private router:Router) { }
 
   employerSignForm:FormGroup
   password:string=""
   verifyPassword:string=""
   checkEmail: boolean
+  matchPassword: boolean;
+  checkCompanyName: boolean;
+  website: boolean;
+  checkDomain: boolean;
+
 
   ngOnInit(): void {
     this.createEmployerAddForm()
@@ -37,63 +46,87 @@ export class EmployerSignComponent implements OnInit {
     
   }
 
-// addEmployer(){
-//   if (this.employerSignForm.valid ) {  
-//     if(this.checkPassword() && !this.checkEmail){
-//       let employerModel = Object.assign({}, this.employerSignForm.value);
-//     this.employerService.add(employerModel).subscribe((response) => {
-//       this.toastrService.success("Kaydınız yapıldı.", employerModel.firstName)
-//     })
-//     }
-// }else{
-//   this.toastrService.error("formunuz eksik")
-// }
- 
-// }
-
 addEmployer() {
-  if (this.employerSignForm.valid) {
-    this.employerService.add(this.employerSignForm.value).subscribe(
-      (response: any) => {
-        this.toastrService.success(response.message,'Succesful');
-      },
-      (responseError) => {
-        let message = JSON.stringify(responseError.error.data.errors);
-        this.toastrService.error(
-          message.replace(/{|}|"/gi, ''),
-          'Validation Errors'
-        );
+  this.matchCandidatePassword();
+    this.checkEmployerEmail();
+    this.checkEmployerCompanyName();
+    this.checkEmployerWebsiteName();
+    this.checkEmployerDomain();
+    if (this.employerSignForm.valid) {
+      if (!this.matchPassword && !this.checkEmail && !this.checkCompanyName && !this.website && !this.checkDomain) {
+        let employerModel = Object.assign({}, this.employerSignForm.value);
+        this.employerService.add(employerModel).subscribe((response: any) => {
+          this.toastrService.success("Kaydınız yapıldı.", employerModel.companyName);
+          this.employerSignForm.reset();
+          setTimeout(() => this.router.navigate(['login']), 1400);
+        })
+
       }
-    );
+    }
+}
+
+matchCandidatePassword() {
+  if (this.password === this.verifyPassword) {
+    this.matchPassword = false;
   } else {
-    this.toastrService.error( 'Missing Form', 'Caution!');
+    this.matchPassword = true;
+    this.toastrService.error("Passwords could not be verified. Try again.", "Error")
   }
 }
 
-checkPassword(){
-  if(this.password===this.verifyPassword){
-    return true;
-  }else{
-    this.toastrService.error("passwords do not match")
-    return false;   
-  }
-}
-
-checkByEmail() {
+checkEmployerEmail() {
   this.userService.getByEmail(this.employerSignForm.value["email"]).subscribe((data: any) => {
-    if (data.data == false) {
-      this.checkEmail = false   
+    if (data.data === false) {
+      this.checkEmail = false;
     } else {
-      this.checkEmail = true
-      this.toastrService.error("this email is being used") 
+      this.checkEmail = true;
+      this.toastrService.error("This email has already been used.", "Error!")
     }
   })
 }
 
-
-
-
-
-
-
+checkEmployerCompanyName() {
+  this.employerService.checkCompanyName(this.employerSignForm.value["companyName"]).subscribe((data: any) => {
+    if (data.data === false) {
+      this.checkCompanyName = false;
+    } else {
+      this.checkCompanyName = true;
+      this.toastrService.error("This company name has already been used.", "Error!")
+    }
+  })
 }
+
+checkEmployerWebsiteName() {
+  this.employerService.checkWebsiteName(this.employerSignForm.value["website"]).subscribe((data: any) => {
+    if (data.data === false) {
+      this.website = false;
+    } else {
+      this.website = true;
+      this.toastrService.error("This website name has already been used.", "Error!")
+    }
+  })
+}
+
+checkEmployerDomain() {
+    let website = this.employerSignForm.value['website'];
+    let domain = website.replace('www.', '');
+    
+    let email = this.employerSignForm.value['email'];
+    let res = email.split('@');
+
+    if (domain === res[1]) {
+      this.checkDomain = false;
+    } else {
+      this.checkDomain = true;
+      this.toastrService.error("Website and email do not match.", "Error!");
+    }
+}
+}
+
+
+
+
+
+
+
+

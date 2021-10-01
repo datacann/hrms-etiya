@@ -1,14 +1,19 @@
+<div class="container">
 <div class="row">
   <div class="col-md-2">
       <app-side-menu></app-side-menu>
   </div>
   <div class="col-md-10 mt-5">
-
 <div class="container">
   <p-table #dt [value]="employerJobAdvertisements" dataKey="id" styleClass="p-datatable-sm" [rowHover]="true"
   [rows]="10" [showCurrentPageReport]="false" [rowsPerPageOptions]="[10,20,50,100]" [paginator]="true"
   [filterDelay]="0">
-  <ng-template pTemplate="header">
+  <ng-template pTemplate="caption">
+        <div class="table-header">
+          <h4 class="text-center">List of Active Jobs Advertisements By Employer</h4>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
       <tr>
           <th pSortableColumn="employer.companyName">
               <div class="p-d-flex p-jc-between p-ai-center">
@@ -156,5 +161,6 @@
       <h6 class="mt-2">Loading...</h6>
     </div>
   </ng-template>
+</div>
 </div>
 </div>

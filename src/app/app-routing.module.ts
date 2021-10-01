@@ -15,6 +15,7 @@ import { EmployerSignComponent } from './features/employers/employer-sign/employ
 import { UpdateCompanyNameComponent } from './features/employers/employer-update/update-company-name/update-company-name.component';
 import { UpdateEmailPasswordComponent } from './features/employers/employer-update/update-email-password/update-email-password.component';
 import { UpdatePhoneNumberComponent } from './features/employers/employer-update/update-phone-number/update-phone-number.component';
+import { EmployersProfileComponent } from './features/employers/employers-profile/employers-profile.component';
 import { HomeComponent } from './features/home/home.component';
 import { ActivJobAdvertByEmployerComponent } from './features/job-advertisement/activ-job-advert-by-employer/activ-job-advert-by-employer.component';
 import { ActiveJobAdvertByDateComponent } from './features/job-advertisement/active-job-advert-by-date/active-job-advert-by-date.component';
@@ -60,6 +61,7 @@ const routes: Routes = [
   {path:"profile",component:EmployeeProfileComponent},
   {path:"approval",component:ApplyChangesComponent,canActivate:[EmployeeGuard]},
   {path:"favorites",component:JobAdvertAddFavouriteComponent},
+  {path:"employerProfile",component:EmployersProfileComponent},
   
 ];
 
